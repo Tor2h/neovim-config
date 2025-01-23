@@ -12,7 +12,7 @@ return {
 		opts = {
 			ensure_installed = {
 				"angularls@17.3.5",
-				"csharp_ls@8.0.405",
+				"csharp_ls",
 			},
 			auto_install = true,
 		},
@@ -37,6 +37,7 @@ return {
 				"--ngProbeLocations",
 				project_library_path,
 			}
+
 			local util = require("lspconfig.util")
 
 			lspconfig.angularls.setup({
@@ -44,22 +45,24 @@ return {
 				on_new_config = function(new_config, project_library_path)
 					new_config.cmd = cmd
 				end,
+                filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+				on_attach = on_attach,
+				on_attach = capablities,
 				root_dir = util.root_pattern(".git", "angular.json", "project.json"),
 				capabilities = capabilities,
 			})
 
-      local project_library_path_csharp = "~/programming/BlueNoteWeb/"
-      local cmd_csharp = {
-        project_library_path_csharp
-      }
 			lspconfig.csharp_ls.setup({
-        --cmd = cmd_csharp,
-				--      on_attach = on_attach,
-				--root_dir = ("~/programming/BlueNoteWeb"),
-        capabilities = capabilities,
+				capabilities = capabilities,
 			})
 
 			lspconfig.ts_ls.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.html.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.cssls.setup({
 				capabilities = capabilities,
 			})
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
