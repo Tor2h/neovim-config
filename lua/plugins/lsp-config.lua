@@ -13,6 +13,7 @@ return {
 			ensure_installed = {
 				"angularls@17.3.5",
 				"csharp_ls",
+                "ts_ls@5.7.4",
 			},
 			auto_install = true,
 		},
@@ -30,12 +31,15 @@ return {
 			local project_library_path = "~/programming/BlueNoteWeb/webApp/angularapp/"
 
 			local cmd = {
+--ngserver --ngProbeLocations "~/node_modules" --tsProbeLocations ~/node_modules
 				"ngserver",
 				"--stdio",
 				"--tsProbeLocations",
-				project_library_path,
+                "~/node_modules",
+--				project_library_path,
 				"--ngProbeLocations",
-				project_library_path,
+                "~/node_modules",
+--				project_library_path,
 			}
 
 			local util = require("lspconfig.util")
@@ -47,7 +51,6 @@ return {
 				end,
                 filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
 				on_attach = on_attach,
-				on_attach = capablities,
 				root_dir = util.root_pattern(".git", "angular.json", "project.json"),
 				capabilities = capabilities,
 			})
