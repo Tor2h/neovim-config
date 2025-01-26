@@ -39,24 +39,35 @@ return {
       }
       local util = require("lspconfig.util")
 
-      lspconfig.angularls.setup({
-        cmd = cmd,
-        on_new_config = function(new_config, project_library_path)
-          new_config.cmd = cmd
-        end,
-        root_dir = util.root_pattern(".git", "angular.json", "project.json"),
+      require("lspconfig").angularls.setup({
+        on_attach = on_attach,
         capabilities = capabilities,
-        filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
+        root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
+        cmd = {
+          "C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
+          "--stdio",
+          "--tsProbeLocations",
+          "C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/typescript/lib",
+          "--ngProbeLocations",
+          "C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules",
+        },
+        on_new_config = function(new_config, new_root_dir)
+          new_config.cmd = {
+            "C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
+            "--stdio",
+            "--tsProbeLocations",
+            new_root_dir .. "/node_modules/typescript/lib",
+            "--ngProbeLocations",
+            new_root_dir .. "/node_modules",
+          }
+        end,
       })
 
-      local project_library_path_csharp = "~/programming/BlueNoteWeb/"
+      local project_library_path_csharp = "~/programming/BlueNoteWeb/webApp/webapi"
       local cmd_csharp = {
         project_library_path_csharp,
       }
       lspconfig.csharp_ls.setup({
-        --cmd = cmd_csharp,
-        --      on_attach = on_attach,
-        --root_dir = ("~/programming/BlueNoteWeb"),
         capabilities = capabilities,
       })
 
