@@ -47,24 +47,26 @@ return {
 			require("lspconfig").angularls.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
-				root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
-				cmd = {
-					"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
-					"--stdio",
-					"--tsProbeLocations",
-					"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/typescript/lib",
-					"--ngProbeLocations",
-					"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules",
-				},
+				root_dir = util.root_pattern("angular.json", ".git"),
+        cmd = cmd,
+				--cmd = {
+					--"C:/Users/torho/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
+					--"--stdio",
+					--"--tsProbeLocations",
+					--"C:/Users/torho/programming/BlueNoteWeb/webApp/angularapp/node_modules/typescript/lib",
+					--"--ngProbeLocations",
+					--"C:/Users/torho/programming/BlueNoteWeb/webApp/angularapp/node_modules",
+				--},
 				on_new_config = function(new_config, new_root_dir)
-					new_config.cmd = {
-						"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
-						"--stdio",
-						"--tsProbeLocations",
-						new_root_dir .. "/node_modules/typescript/lib",
-						"--ngProbeLocations",
-						new_root_dir .. "/node_modules",
-					}
+          new_config.cmd = cmd
+					--new_config.cmd = {
+						--"C:/Users/torho/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
+						--"--stdio",
+						--"--tsProbeLocations",
+						--new_root_dir .. "/node_modules/typescript/lib",
+						--"--ngProbeLocations",
+						--new_root_dir .. "/node_modules",
+					--}
 				end,
 			})
 
