@@ -12,8 +12,12 @@ o.smartindent = true
 
 o.termguicolors = true
 
-o.scrolloff = 15
+o.scrolloff = 90
 o.signcolumn = "yes"
 o.isfname:append("@-@")
 
 o.updatetime = 50
+
+global.skip_ts_context_commentstring_module = true
+vim.cmd [[syntax on]]
+vim.cmd [[filetype plugin indent on]]
