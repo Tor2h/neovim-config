@@ -8,6 +8,7 @@ return {
 					null_ls.builtins.formatting.stylua,
 					null_ls.builtins.formatting.prettier,
           null_ls.builtins.formatting.csharpier,
+          require("none-ls.diagnostics.eslint"),
 				},
 			})
 			vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})

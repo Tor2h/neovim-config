@@ -17,7 +17,7 @@ return {
 				"csharp_ls@8.0.405",
 				"ts_ls",
 				"html",
-        "cssls",
+				"cssls",
 			},
 			auto_install = true,
 		},
@@ -48,24 +48,24 @@ return {
 				on_attach = on_attach,
 				capabilities = capabilities,
 				root_dir = util.root_pattern("angular.json", ".git"),
-        cmd = cmd,
+				cmd = cmd,
 				--cmd = {
+				--"C:/Users/torho/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
+				--"--stdio",
+				--"--tsProbeLocations",
+				--"C:/Users/torho/programming/BlueNoteWeb/webApp/angularapp/node_modules/typescript/lib",
+				--"--ngProbeLocations",
+				--"C:/Users/torho/programming/BlueNoteWeb/webApp/angularapp/node_modules",
+				--},
+				on_new_config = function(new_config, new_root_dir)
+					new_config.cmd = cmd
+					--new_config.cmd = {
 					--"C:/Users/torho/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
 					--"--stdio",
 					--"--tsProbeLocations",
-					--"C:/Users/torho/programming/BlueNoteWeb/webApp/angularapp/node_modules/typescript/lib",
+					--new_root_dir .. "/node_modules/typescript/lib",
 					--"--ngProbeLocations",
-					--"C:/Users/torho/programming/BlueNoteWeb/webApp/angularapp/node_modules",
-				--},
-				on_new_config = function(new_config, new_root_dir)
-          new_config.cmd = cmd
-					--new_config.cmd = {
-						--"C:/Users/torho/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
-						--"--stdio",
-						--"--tsProbeLocations",
-						--new_root_dir .. "/node_modules/typescript/lib",
-						--"--ngProbeLocations",
-						--new_root_dir .. "/node_modules",
+					--new_root_dir .. "/node_modules",
 					--}
 				end,
 			})
@@ -82,9 +82,9 @@ return {
 				capabilities = capabilities,
 			})
 
-      lspconfig.cssls.setup({
-        capabilities = capabilities,
-      })
+			lspconfig.cssls.setup({
+				capabilities = capabilities,
+			})
 
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
@@ -102,6 +102,11 @@ return {
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+			vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, {})
+			vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
+			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, {})
+			vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, {})
+			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
 		end,
 	},
 	{
