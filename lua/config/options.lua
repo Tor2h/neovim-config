@@ -9,6 +9,10 @@ o.showcmd = false
 o.conceallevel = 2
 o.concealcursor = "nc"
 
+o.inccommand = "split"
+o.smartcase = true
+o.ignorecase = true
+
 o.expandtab = true
 o.tabstop = 2
 o.softtabstop = 2
