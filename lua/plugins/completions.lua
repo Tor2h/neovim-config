@@ -11,6 +11,8 @@ return {
 	},
 	{
 		"hrsh7th/nvim-cmp",
+    lazy = false,
+    priority = 100,
 		config = function()
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
