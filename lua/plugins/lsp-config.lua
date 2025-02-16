@@ -28,7 +28,7 @@ return {
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local machine = "pc"
+			local machine = "work"
 			local lspconfig = require("lspconfig")
 
 			--https://www.reddit.com/r/neovim/comments/1b2agh3/configure_auto_formatting_for_none_ls_and/
@@ -60,7 +60,10 @@ return {
 			local util = require("lspconfig.util")
 
 			require("lspconfig").angularls.setup({
-				on_attach = on_attach,
+				on_attach = function(client)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentFormattingRangeProvider = false
+				end,
 				capabilities = capabilities,
 				root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
 				cmd = cmd,
@@ -80,20 +83,36 @@ return {
 			})
 
 			lspconfig.csharp_ls.setup({
+				on_attach = function(client)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentFormattingRangeProvider = false
+				end,
 				capabilities = capabilities,
 				root_dir = project_library_path_csharp,
 			})
 
 			lspconfig.html.setup({
+				on_attach = function(client)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentFormattingRangeProvider = false
+				end,
 				capabilities = capabilities,
 			})
 
 			lspconfig.cssls.setup({
+				on_attach = function(client)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentFormattingRangeProvider = false
+				end,
 				capabilities = capabilities,
 			})
 
 			if machine == "pc" then
 				lspconfig.ts_ls.setup({
+					on_attach = function(client)
+						client.server_capabilities.documentFormattingProvider = false
+						client.server_capabilities.documentFormattingRangeProvider = false
+					end,
 					capabilities = capabilities,
 					filetypes = {
 						"javascript",
@@ -118,9 +137,17 @@ return {
 			vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, {})
 		end,
 	},
-	-- {
-	-- 	"pmizio/typescript-tools.nvim",
-	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-	-- 	opts = {},
-	-- },
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+		config = function()
+			require("typescript-tools").setup({
+				on_attach = function(client)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentRangeFormattingProvider = false
+				end,
+			})
+		end,
+	},
 }
