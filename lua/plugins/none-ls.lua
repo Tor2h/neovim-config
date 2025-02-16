@@ -3,10 +3,11 @@ return {
     "nvimtools/none-ls.nvim",
     config = function()
       local null_ls = require("null-ls")
-      local work_path = "C:/Projekter/renomatic/Angular/renomatic/"
-      local personal_path = "~/programming/BlueNoteWeb/webApp/angularapp/"
 
-      local current_dir = vim.fn.getcwd()
+      local work_path = "C:/Projekter/renomatic/Angular/renomatic"
+      local personal_path = "C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp"
+
+      local current_dir = vim.fn.getcwd():gsub("\\", "/")
 
       if current_dir == personal_path then
         null_ls.setup({

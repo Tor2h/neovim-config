@@ -29,13 +29,12 @@ return {
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local work_path = "C:/Projekter/renomatic/Angular/renomatic/"
-			local personal_path = "~/programming/BlueNoteWeb/webApp/angularapp/"
+			local work_path = "C:/Projekter/renomatic/Angular/renomatic"
+			local personal_path = "C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp"
 
-			local current_dir = vim.fn.getcwd()
+			local current_dir = vim.fn.getcwd():gsub("\\", "/")
 
 			if current_dir == personal_path then
-				local project_library_path = "~/programming/BlueNoteWeb/webApp/angularapp/"
 				require("lspconfig").angularls.setup({
 					on_attach = function(client)
 						client.server_capabilities.documentFormattingProvider = false
@@ -59,7 +58,6 @@ return {
 
 			if current_dir == work_path then
 				project_library_path = "C:/Projekter/renomatic/Angular/renomatic/"
-				local lspconfig = require("lspconfig")
 				require("lspconfig").angularls.setup({
 					on_attach = function(client)
 						client.server_capabilities.documentFormattingProvider = false
