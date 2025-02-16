@@ -26,50 +26,25 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
+			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-			local machine = "work"
-			local lspconfig = require("lspconfig")
+			local work_path = "C:/Projekter/renomatic/Angular/renomatic/"
+			local personal_path = "~/programming/BlueNoteWeb/webApp/angularapp/"
 
-			--https://www.reddit.com/r/neovim/comments/1b2agh3/configure_auto_formatting_for_none_ls_and/
+			local current_dir = vim.fn.getcwd()
 
-			local project_library_path = "~/programming/BlueNoteWeb/webApp/angularapp/"
-			local cmd = {
-				"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
-				"--stdio",
-				"--tsProbeLocations",
-				"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/typescript/lib",
-				"--ngProbeLocations",
-				"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules",
-			}
-			local project_library_path_csharp = "~/programming/BlueNoteWeb/webApp/webapi"
-
-			if machine == "work" then
-				project_library_path = "C:/Projekter/renomatic/Angular/renomatic/"
-				cmd = {
-					"ngserver",
-					"--stdio",
-					"--tsProbeLocations",
-					project_library_path,
-					"--ngProbeLocations",
-					project_library_path,
-				}
-				project_library_path_csharp = "C:/Projekter/renomatic/Renomatic_Codebase/Renomatic.Core/"
-			end
-
-			local util = require("lspconfig.util")
-
-			require("lspconfig").angularls.setup({
-				on_attach = function(client)
-					client.server_capabilities.documentFormattingProvider = false
-					client.server_capabilities.documentFormattingRangeProvider = false
-				end,
-				capabilities = capabilities,
-				root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
-				cmd = cmd,
-				on_new_config = function(new_config, new_root_dir)
-					new_config.cmd = cmd
-					if machine == "pc" then
+			if current_dir == personal_path then
+				local project_library_path = "~/programming/BlueNoteWeb/webApp/angularapp/"
+				require("lspconfig").angularls.setup({
+					on_attach = function(client)
+						client.server_capabilities.documentFormattingProvider = false
+						client.server_capabilities.documentFormattingRangeProvider = false
+					end,
+					capabilities = capabilities,
+					root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
+					cmd = cmd,
+					on_new_config = function(new_config, new_root_dir)
 						new_config.cmd = {
 							"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
 							"--stdio",
@@ -78,18 +53,64 @@ return {
 							"--ngProbeLocations",
 							new_root_dir .. "/node_modules",
 						}
-					end
-				end,
-			})
+					end,
+				})
+			end
 
-			lspconfig.csharp_ls.setup({
-				on_attach = function(client)
-					client.server_capabilities.documentFormattingProvider = false
-					client.server_capabilities.documentFormattingRangeProvider = false
-				end,
-				capabilities = capabilities,
-				root_dir = project_library_path_csharp,
-			})
+			if current_dir == work_path then
+				project_library_path = "C:/Projekter/renomatic/Angular/renomatic/"
+				local lspconfig = require("lspconfig")
+				require("lspconfig").angularls.setup({
+					on_attach = function(client)
+						client.server_capabilities.documentFormattingProvider = false
+						client.server_capabilities.documentFormattingRangeProvider = false
+					end,
+					capabilities = capabilities,
+					root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
+					cmd = {
+						"ngserver",
+						"--stdio",
+						"--tsProbeLocations",
+						project_library_path,
+						"--ngProbeLocations",
+						project_library_path,
+					},
+					on_new_config = function(new_config, new_root_dir)
+						new_config.cmd = {
+							"ngserver",
+							"--stdio",
+							"--tsProbeLocations",
+							project_library_path,
+							"--ngProbeLocations",
+							project_library_path,
+						}
+					end,
+				})
+			end
+
+			local util = require("lspconfig.util")
+
+			if current_dir == work_path then
+				lspconfig.csharp_ls.setup({
+					on_attach = function(client)
+						client.server_capabilities.documentFormattingProvider = false
+						client.server_capabilities.documentFormattingRangeProvider = false
+					end,
+					capabilities = capabilities,
+					root_dir = "C:/Projekter/renomatic/Renomatic_Codebase/Renomatic.Core/",
+				})
+			end
+
+			if current_dir == personal_path then
+				lspconfig.csharp_ls.setup({
+					on_attach = function(client)
+						client.server_capabilities.documentFormattingProvider = false
+						client.server_capabilities.documentFormattingRangeProvider = false
+					end,
+					capabilities = capabilities,
+					root_dir = "~/programming/BlueNoteWeb/webApp/webapi",
+				})
+			end
 
 			lspconfig.html.setup({
 				on_attach = function(client)
@@ -107,24 +128,28 @@ return {
 				capabilities = capabilities,
 			})
 
-			if machine == "pc" then
-				lspconfig.ts_ls.setup({
-					on_attach = function(client)
-						client.server_capabilities.documentFormattingProvider = false
-						client.server_capabilities.documentFormattingRangeProvider = false
-					end,
-					capabilities = capabilities,
-					filetypes = {
-						"javascript",
-						"javascriptreact",
-						"javascript.jsx",
-						"typescript",
-						"typescriptreact",
-						"typescript.tsx",
-						"html",
-					},
-				})
-			end
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+
+			-- if machine == "pc" then
+			lspconfig.ts_ls.setup({
+				on_attach = function(client)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentFormattingRangeProvider = false
+				end,
+				capabilities = capabilities,
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"javascript.jsx",
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+					"html",
+				},
+			})
+			-- end
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
