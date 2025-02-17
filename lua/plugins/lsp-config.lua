@@ -135,23 +135,23 @@ return {
 				end,
 			})
 
-			-- if machine == "pc" then
-			lspconfig.ts_ls.setup({
-				on_attach = function(client)
-					on_attach_no_format(client)
-				end,
-				capabilities = capabilities,
-				filetypes = {
-					"javascript",
-					"javascriptreact",
-					"javascript.jsx",
-					"typescript",
-					"typescriptreact",
-					"typescript.tsx",
-					"html",
-				},
-			})
-			-- end
+			if current_config_dir == personal_config_path then
+				lspconfig.ts_ls.setup({
+					on_attach = function(client)
+						on_attach_no_format(client)
+					end,
+					capabilities = capabilities,
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"javascript.jsx",
+						"typescript",
+						"typescriptreact",
+						"typescript.tsx",
+						"html",
+					},
+				})
+			end
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
