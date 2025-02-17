@@ -64,7 +64,7 @@ return {
 				else
 					vim.lsp.buf.format({ async = true, name = formatters[1] })
 				end
-			end, bufopts)
+			end, { desc = "Format" })
 		end,
 	},
 	{

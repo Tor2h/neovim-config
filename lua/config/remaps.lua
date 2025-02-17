@@ -25,6 +25,10 @@ set("n", "<c-h>", "<c-w><c-h>")
 set("n", "<left>", "gT")
 set("n", "<right>", "gt")
 
+set("n", "<leader>x", vim.diagnostic.open_float, {desc="Error diagnostic"})
+
+set("n", "<leader>ge", vim.diagnostic.goto_next, {desc="Next Error"})
+
 set("n", "<CR>", function()
   ---@diagnostic disable-next-line: undefined-field
   if vim.v.hlsearch == 1 then
