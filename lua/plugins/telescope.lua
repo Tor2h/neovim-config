@@ -23,9 +23,6 @@ return {
 				},
 			})
 
-      require("telescope").load_extension("fzf")
-      require("telescope").load_extension("zoxide")
-
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>e", builtin.find_files, { desc = "Find files" })
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Fuzzy find" })
