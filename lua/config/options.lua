@@ -5,7 +5,7 @@ o.number = true
 o.relativenumber = true
 o.numberwidth = 4
 o.showmode = false
-o.showcmd = false
+-- o.showcmd = false
 o.conceallevel = 2
 o.concealcursor = "nc"
 
@@ -34,6 +34,6 @@ o.isfname:append("@-@")
 o.updatetime = 50
 vim.diagnostic.config({ signs = false })
 
-global.skip_ts_context_commentstring_module = true
+--global.skip_ts_context_commentstring_module = true
 vim.cmd([[syntax on]])
 vim.cmd([[filetype plugin indent on]])

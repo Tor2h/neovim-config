@@ -4,6 +4,28 @@ return {
 		tag = "0.1.8",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
+			require("telescope").setup({
+				pickers = {
+					colorscheme = {
+						enable_preview = true,
+					},
+					find_files = {
+						hidden = true,
+						find_command = {
+							"rg",
+							"--files",
+							"--glob",
+							"!{.git/*,.next/*,.svelte-kit/*,target/*,node_modules/*}",
+							"--path-separator",
+							"/",
+						},
+					},
+				},
+			})
+
+      require("telescope").load_extension("fzf")
+      require("telescope").load_extension("zoxide")
+
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>e", builtin.find_files, { desc = "Find files" })
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Fuzzy find" })
