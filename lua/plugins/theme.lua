@@ -61,14 +61,24 @@ return {
 				overrides = function(colors) -- add/modify highlights
 					return {}
 				end,
-				theme = "wave", -- Load "wave" theme when 'background' option is not set
+				theme = "dragon", -- Load "wave" theme when 'background' option is not set
 				background = { -- map the value of 'background' option to a theme
-					dark = "wave", -- try "dragon" !
+					dark = "dragon", -- try "dragon" !
 					light = "lotus",
 				},
 			})
 
 			vim.cmd.colorscheme("kanagawa")
+		end,
+	},
+	{
+		"f4z3r/gruvbox-material.nvim",
+		config = function()
+			require("gruvbox-material").setup({
+				background = {
+					transparent = true,
+				},
+			})
 		end,
 	},
 	"rktjmp/lush.nvim",
@@ -124,16 +134,6 @@ return {
 			})
 		end,
 	},
-	{
-		"ellisonleao/gruvbox.nvim",
-		config = function()
-			require("gruvbox").setup({
-				palette_overrides = {
-					dark0 = "#000000",
-				},
-			})
-		end,
-	},
 	-- Lazy
 	{
 		"vague2k/vague.nvim",
@@ -169,7 +169,6 @@ return {
 	},
 	"uloco/bluloco.nvim",
 	"LuRsT/austere.vim",
-	"ricardoraposo/gruvbox-minor.nvim",
 	"NTBBloodbath/sweetie.nvim",
 	"vim-scripts/MountainDew.vim",
 	{
