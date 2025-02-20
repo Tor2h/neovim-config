@@ -71,19 +71,6 @@ return {
 			vim.cmd.colorscheme("kanagawa")
 		end,
 	},
-	{
-		"f4z3r/gruvbox-material.nvim",
-		config = function()
-			require("gruvbox-material").setup({
-				background = {
-					transparent = true,
-				},
-			})
-		end,
-	},
-	"rktjmp/lush.nvim",
-	"tckmn/hotdog.vim",
-	"dundargoc/fakedonalds.nvim",
 	"craftzdog/solarized-osaka.nvim",
 	{
 		"rose-pine/neovim",
@@ -101,11 +88,6 @@ return {
 			})
 		end,
 	},
-	"eldritch-theme/eldritch.nvim",
-	"jesseleite/nvim-noirbuddy",
-	"miikanissi/modus-themes.nvim",
-	"gremble0/yellowbeans.nvim",
-	"rockyzhang24/arctic.nvim",
 	{
 		"folke/tokyonight.nvim",
 		config = function()
@@ -116,12 +98,6 @@ return {
 			})
 		end,
 	},
-	"Shatur/neovim-ayu",
-	"RRethy/base16-nvim",
-	"xero/miasma.nvim",
-	"cocopon/iceberg.vim",
-	"kepano/flexoki-neovim",
-	"ntk148v/komau.vim",
 	{
 		"catppuccin/nvim",
 		config = function()
@@ -168,14 +144,4 @@ return {
 		end,
 	},
 	"uloco/bluloco.nvim",
-	"LuRsT/austere.vim",
-	"NTBBloodbath/sweetie.nvim",
-	"vim-scripts/MountainDew.vim",
-	{
-		"maxmx03/fluoromachine.nvim",
-		-- config = function()
-		--   local fm = require "fluoromachine"
-		--   fm.setup { glow = true, theme = "fluoromachine" }
-		-- end,
-	},
 }

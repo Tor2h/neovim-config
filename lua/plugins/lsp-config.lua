@@ -5,7 +5,12 @@ return {
 		"williamboman/mason.nvim",
 		lazy = false,
 		config = function()
-			require("mason").setup()
+			require("mason").setup({
+				registries = {
+					"github:Crashdummyy/mason-registry",
+					"github:mason-org/mason-registry",
+				},
+			})
 		end,
 	},
 	{
@@ -14,12 +19,18 @@ return {
 		opts = {
 			ensure_installed = {
 				"angularls@17.3.5",
-				"csharp_ls",
 				"ts_ls",
 				"html",
 				"cssls",
 			},
 			auto_install = true,
+		},
+	},
+	{
+		"seblyng/roslyn.nvim",
+		ft = "cs",
+		opts = {
+			-- your configuration comes here; leave empty for default settings
 		},
 	},
 	{
@@ -94,15 +105,15 @@ return {
 
 			local util = require("lspconfig.util")
 
-			if current_config_dir == work_config_path then
-				lspconfig.csharp_ls.setup({
-					on_attach = function(client)
-						on_attach_no_format(client)
-					end,
-					capabilities = capabilities,
-					root_dir = "C:/Projekter/renomatic/Renomatic_Codebase/Renomatic.Core/",
-				})
-			end
+			-- if current_config_dir == work_config_path then
+			-- 	lspconfig.csharp_ls.setup({
+			-- 		on_attach = function(client)
+			-- 			on_attach_no_format(client)
+			-- 		end,
+			-- 		capabilities = capabilities,
+			-- 		root_dir = "C:/Projekter/renomatic/Renomatic_Codebase/Renomatic.Core/",
+			-- 	})
+			-- end
 
 			if current_config_dir == personal_config_path then
 				lspconfig.csharp_ls.setup({
