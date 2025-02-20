@@ -14,21 +14,13 @@ return {
 
 			local current_dir = vim.fn.getcwd():gsub("\\", "/")
 
-			if current_dir == work_path then
+			if current_config_dir == work_config_path then
 				null_ls.setup({
 					sources = {
 						null_ls.builtins.formatting.stylua,
 						require("none-ls.diagnostics.eslint"),
 						null_ls.builtins.formatting.prettier,
 						null_ls.builtins.formatting.csharpier,
-					},
-				})
-			elseif current_dir ~= work_angular_path and current_config_dir == work_config_path then
-				null_ls.setup({
-					sources = {
-						null_ls.builtins.formatting.stylua,
-						-- null_ls.builtins.formatting.prettier,
-						-- null_ls.builtins.formatting.csharpier,
 					},
 				})
 			else

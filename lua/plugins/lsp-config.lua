@@ -30,6 +30,12 @@ return {
 		"seblyng/roslyn.nvim",
 		ft = "cs",
 		opts = {
+			config = {
+				on_attach = function(client)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentFormattingRangeProvider = false
+				end,
+			},
 			-- your configuration comes here; leave empty for default settings
 		},
 	},
@@ -80,7 +86,7 @@ return {
 				})
 			end
 
-			if current_dir == work_angular_path then
+			if current_config_dir == work_config_path then
 				local project_library_path = "C:/Projekter/renomatic/Angular/renomatic/"
 				local cmd = {
 					"ngserver",
