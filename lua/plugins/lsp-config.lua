@@ -113,16 +113,6 @@ return {
 				})
 			end
 
-			if current_config_dir == personal_config_path then
-				lspconfig.csharp_ls.setup({
-					on_attach = function(client)
-						on_attach_no_format(client)
-					end,
-					capabilities = capabilities,
-					root_dir = "~/programming/BlueNoteWeb/webApp/webapi",
-				})
-			end
-
 			lspconfig.html.setup({
 				on_attach = function(client)
 					on_attach_no_format(client)
