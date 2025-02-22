@@ -9,6 +9,8 @@ set("n", "<C-u>", "<C-u>zz")
 set("n", "n", "nzzzv")
 set("n", "N", "Nzzzv")
 
+set("x", "<leader>p", "\"_dP")
+
 set("n", "<leader>y", "\"+y")
 set("v", "<leader>y", "\"+y")
 
