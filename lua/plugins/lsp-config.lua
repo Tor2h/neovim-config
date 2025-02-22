@@ -1,6 +1,7 @@
 return {
 	"windwp/nvim-ts-autotag",
 	"JoosepAlviste/nvim-ts-context-commentstring",
+
 	{
 		"williamboman/mason.nvim",
 		lazy = false,
@@ -13,6 +14,7 @@ return {
 			})
 		end,
 	},
+
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
@@ -26,6 +28,7 @@ return {
 			auto_install = true,
 		},
 	},
+
 	{
 		"seblyng/roslyn.nvim",
 		ft = "cs",
@@ -39,6 +42,7 @@ return {
 			-- your configuration comes here; leave empty for default settings
 		},
 	},
+
 	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
@@ -109,18 +113,6 @@ return {
 				})
 			end
 
-			local util = require("lspconfig.util")
-
-			-- if current_config_dir == work_config_path then
-			-- 	lspconfig.csharp_ls.setup({
-			-- 		on_attach = function(client)
-			-- 			on_attach_no_format(client)
-			-- 		end,
-			-- 		capabilities = capabilities,
-			-- 		root_dir = "C:/Projekter/renomatic/Renomatic_Codebase/Renomatic.Core/",
-			-- 	})
-			-- end
-
 			if current_config_dir == personal_config_path then
 				lspconfig.csharp_ls.setup({
 					on_attach = function(client)
@@ -181,6 +173,7 @@ return {
 			vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Definition" })
 		end,
 	},
+
 	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },

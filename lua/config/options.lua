@@ -27,7 +27,7 @@ o.history = 100
 o.smoothscroll = true
 o.ttyfast = true
 
-o.scrolloff = 90
+o.scrolloff = 10
 o.signcolumn = "yes"
 o.isfname:append("@-@")
 
