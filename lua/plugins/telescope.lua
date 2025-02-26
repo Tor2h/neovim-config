@@ -2,7 +2,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.8",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "BurntSushi/ripgrep", "nvim-lua/plenary.nvim" },
 		config = function()
 			require("telescope").setup({
 				pickers = {
@@ -25,9 +25,10 @@ return {
 
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>e", builtin.find_files, { desc = "Find files" })
-			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Fuzzy find" })
+			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope fuzzy find" })
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+			vim.keymap.set({ "n", "v" }, "<leader>fs", builtin.grep_string, { desc = "Telescope find string" })
 		end,
 	},
 	{
@@ -55,6 +56,8 @@ return {
 				pickers = {
 					git_status = { path_display = filenameFirst },
 					find_files = { path_display = filenameFirst },
+					live_grep = { path_display = filenameFirst },
+					grep_string = { path_display = filenameFirst },
 				},
 				extensions = {
 					["ui-select"] = {
