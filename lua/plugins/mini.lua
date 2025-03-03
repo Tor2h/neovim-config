@@ -9,14 +9,14 @@ return {
 	--      })
 	-- 	end,
 	-- },
-	{
-		"echasnovski/mini.tabline",
-		config = function()
-			require("mini.tabline").setup({
-				set_vim_settings = false,
-			})
-		end,
-	},
+	-- {
+	-- 	"echasnovski/mini.tabline",
+	-- 	config = function()
+	-- 		require("mini.tabline").setup({
+	-- 			set_vim_settings = false,
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		"echasnovski/mini.notify",
 		config = function()

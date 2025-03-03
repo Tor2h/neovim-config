@@ -25,7 +25,10 @@ set("n", "<c-k>", "<c-w><c-k>")
 set("n", "<c-l>", "<c-w><c-l>")
 set("n", "<c-h>", "<c-w><c-h>")
 
-set("n", "<leader>s", ":wa<CR>")
+set("n", "<c-w>n", "<c-w>10<")
+set("n", "<c-w>m", "<c-w>10>")
+
+-- set("n", "<leader>s", ":wa<CR>")
 
 -- set("n", "<c-w>j", "<c-w><c-j>")
 -- set("n", "<c-w>k", "<c-w><c-k>")
