@@ -24,6 +24,7 @@ return {
 				"ts_ls",
 				"html",
 				"cssls",
+				"roslyn@5.0.0-1.25153.5",
 			},
 			auto_install = true,
 		},
