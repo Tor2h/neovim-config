@@ -31,6 +31,9 @@ o.scrolloff = 10
 o.signcolumn = "yes"
 o.isfname:append("@-@")
 
+global.python_host_skip_check = 1
+global.python3_host_skip_check = 1
+
 o.updatetime = 50
 vim.diagnostic.config({ signs = false })
 
