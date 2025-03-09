@@ -40,7 +40,6 @@ return {
 					client.server_capabilities.documentFormattingRangeProvider = false
 				end,
 			},
-			-- your configuration comes here; leave empty for default settings
 		},
 	},
 

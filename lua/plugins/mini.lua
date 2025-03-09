@@ -1,32 +1,34 @@
 return {
-	-- {
-	-- 	"echasnovski/mini.animate",
-	-- 	config = function()
-	-- 		require("mini.animate").setup({
-	--        scroll = {
-	--          enable = false
-	--        }
-	--      })
-	-- 	end,
-	-- },
-	-- {
-	-- 	"echasnovski/mini.tabline",
-	-- 	config = function()
-	-- 		require("mini.tabline").setup({
-	-- 			set_vim_settings = false,
-	-- 		})
-	-- 	end,
-	-- },
 	{
-		"echasnovski/mini.notify",
+		"echasnovski/mini.ai",
 		config = function()
-			require("mini.notify").setup()
+			require("mini.ai").setup({
+				version = false,
+			})
 		end,
 	},
 	{
-		"echasnovski/mini.cursorword",
+		"echasnovski/mini.surround",
 		config = function()
-			require("mini.cursorword").setup()
+			require("mini.surround").setup({
+				version = false,
+			})
+		end,
+	},
+	{
+		"echasnovski/mini.sessions",
+		config = function()
+			require("mini.sessions").setup({
+				version = false,
+			})
+		end,
+	},
+	{
+		"echasnovski/mini.pairs",
+		config = function()
+			require("mini.pairs").setup({
+				version = false,
+			})
 		end,
 	},
 }

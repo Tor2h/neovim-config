@@ -30,25 +30,11 @@ return {
 		end,
 	},
 
-	-- {
-	-- 	"hrsh7th/cmp-buffer",
-	-- 	lazy = false,
-	-- 	priority = 100,
-	-- 	config = function()
-	-- 		local cmp = require("cmp")
-	-- 		require("luasnip.loaders.from_vscode").lazy_load()
-	--
-	-- 		cmp.setup.cmdline({ "/", "?" }, {
-	-- 			mapping = cmp.mapping.preset.cmdline(),
-	-- 			sources = {
-	-- 				{ name = "buffer" },
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
-
 	{
 		"hrsh7th/nvim-cmp",
+		dependencies = {
+			"hrsh7th/cmp-buffer",
+		},
 		lazy = false,
 		priority = 200,
 		config = function()
@@ -79,6 +65,13 @@ return {
 				}, {
 					{ name = "buffer" },
 				}),
+			})
+
+			cmp.setup.cmdline({ "/", "?" }, {
+				mapping = cmp.mapping.preset.cmdline(),
+				sources = {
+					{ name = "buffer" },
+				},
 			})
 		end,
 	},

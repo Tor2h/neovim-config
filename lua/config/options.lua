@@ -1,6 +1,8 @@
 local global = vim.g
 local o = vim.opt
 
+global.snacks_animate = false
+
 o.number = true
 o.relativenumber = true
 o.numberwidth = 4
@@ -30,6 +32,7 @@ o.ttyfast = true
 o.scrolloff = 10
 o.signcolumn = "yes"
 o.isfname:append("@-@")
+o.fillchars = { eob = " " }
 
 global.python_host_skip_check = 1
 global.python3_host_skip_check = 1

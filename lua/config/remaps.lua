@@ -28,13 +28,6 @@ set("n", "<c-h>", "<c-w><c-h>")
 set("n", "<c-w>n", "<c-w>10<")
 set("n", "<c-w>m", "<c-w>10>")
 
--- set("n", "<leader>s", ":wa<CR>")
-
--- set("n", "<c-w>j", "<c-w><c-j>")
--- set("n", "<c-w>k", "<c-w><c-k>")
--- set("n", "<c-w>l", "<c-w><c-l>")
--- set("n", "<c-w>h", "<c-w><c-h>")
-
 set("n", "<leader>te", ":tabedit<CR>", opts)
 set("n", "<left>", "gT")
 set("n", "<right>", "gt")
