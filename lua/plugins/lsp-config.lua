@@ -153,12 +153,12 @@ return {
 			end
 
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover" })
-			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Definition" })
-			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "References" })
+			-- vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Definition" })
+			-- vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "References" })
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
-			vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "Declaration" })
-			vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "Implementation" })
+			-- vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "Declaration" })
+			-- vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "Implementation" })
 			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature help" })
 			vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Definition" })
 		end,

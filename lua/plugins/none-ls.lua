@@ -12,8 +12,6 @@ return {
 			local current_dir = vim.fn.getcwd():gsub("\\", "/")
 			local current_config_dir = vim.fn.stdpath("config"):gsub("\\", "/")
 
-			local current_dir = vim.fn.getcwd():gsub("\\", "/")
-
 			if current_config_dir == work_config_path then
 				null_ls.setup({
 					sources = {
@@ -31,7 +29,7 @@ return {
 				})
 			end
 
-			vim.keymap.set({ "n", "v" }, "<leader>w", function()
+			vim.keymap.set({ "n", "v" }, "<leader>j", function()
 				local clients = vim.lsp.get_clients({ bufnr = bufnr })
 				local formatters = {}
 
@@ -50,11 +48,9 @@ return {
 
 						local formatter = formatters[choice]
 						vim.lsp.buf.format({ async = true, name = formatter })
-						vim.cmd("wa")
 					end)
 				else
 					vim.lsp.buf.format({ async = true, name = formatters[1] })
-					vim.cmd("wa")
 				end
 			end, { desc = "Format" })
 		end,
