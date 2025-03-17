@@ -113,6 +113,10 @@ return {
 				})
 			end
 
+			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+			})
+
 			lspconfig.html.setup({
 				on_attach = function(client)
 					on_attach_no_format(client)
