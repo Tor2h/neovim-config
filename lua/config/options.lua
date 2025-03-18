@@ -33,6 +33,10 @@ o.scrolloff = 10
 o.signcolumn = "yes"
 o.isfname:append("@-@")
 o.fillchars = { eob = " " }
+o.guifont = "Iosevka Nerd Font:h17"
+global.neovide_title_background_color = "black"
+global.neovide_hide_mouse_when_typing = true
+global.neovide_refresh_rate = 60
 
 global.python_host_skip_check = 1
 global.python3_host_skip_check = 1
