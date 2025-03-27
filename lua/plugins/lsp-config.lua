@@ -117,6 +117,10 @@ return {
 				capabilities = capabilities,
 			})
 
+			lspconfig.gopls.setup({
+				capabilities = capabilities,
+			})
+
 			lspconfig.html.setup({
 				on_attach = function(client)
 					on_attach_no_format(client)
