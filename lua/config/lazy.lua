@@ -28,4 +28,5 @@ require("lazy").setup({
 	},
 	install = { colorscheme = { "kanagawa" } },
 	checker = { enabled = true },
+	rocks = { enabled = false, hererocs = false },
 })

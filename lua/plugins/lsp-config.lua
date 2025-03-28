@@ -54,6 +54,12 @@ return {
 				client.server_capabilities.documentFormattingRangeProvider = false
 			end
 
+			local on_attach_no_format_no_references = function(client)
+				client.server_capabilities.documentFormattingProvider = false
+				client.server_capabilities.documentFormattingRangeProvider = false
+				client.server_capabilities.referencesProvider = false
+			end
+
 			local work_angular_path = "C:/Projekter/renomatic/Angular/renomatic"
 			local work_config_path = "C:/Users/tho/AppData/Local/nvim"
 			local personal_angular_path = "C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp"
@@ -102,7 +108,7 @@ return {
 				}
 				require("lspconfig").angularls.setup({
 					on_attach = function(client)
-						on_attach_no_format(client)
+						on_attach_no_format_no_references(client)
 					end,
 					capabilities = capabilities,
 					root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
@@ -114,10 +120,6 @@ return {
 			end
 
 			lspconfig.rust_analyzer.setup({
-				capabilities = capabilities,
-			})
-
-			lspconfig.gopls.setup({
 				capabilities = capabilities,
 			})
 
@@ -183,7 +185,6 @@ return {
 				on_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentRangeFormattingProvider = false
-					client.server_capabilities.referencesProvider = false
 				end,
 			})
 		end,
