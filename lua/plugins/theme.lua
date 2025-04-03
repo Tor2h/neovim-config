@@ -50,7 +50,7 @@ return {
 				colors = { -- add/modify theme and palette colors
 					palette = {},
 					theme = {
-						all = {
+						dragon = {
 							ui = {
 								bg = "none",
 								bg_gutter = "none",
@@ -93,7 +93,7 @@ return {
 		config = function()
 			require("tokyonight").setup({
 				on_colors = function(colors)
-					colors.bg = "#000000"
+					-- colors.bg = "#000000"
 				end,
 			})
 		end,
@@ -104,7 +104,7 @@ return {
 			require("catppuccin").setup({
 				color_overrides = {
 					all = {
-						base = "#000000",
+						-- base = "#000000",
 					},
 				},
 			})
@@ -118,30 +118,9 @@ return {
 			require("vague").setup({
 				-- optional configuration here
 				colors = {
-					bg = "#000000",
+					-- bg = "#000000",
 				},
 			})
 		end,
 	},
-	{
-		"ilof2/posterpole.nvim",
-		priority = 1000,
-		config = function()
-			local posterpole = require("posterpole")
-			posterpole.setup({
-				colors = {
-					brightness = 10,
-					posterpole = {
-						bgColor = "#000000",
-					},
-				},
-				-- config here
-			})
-
-			-- This function create sheduled task, which will reload theme every hour
-			-- Without "setup_adaptive" adaptive brightness will be set only after every restart
-			posterpole.setup_adaptive()
-		end,
-	},
-	"uloco/bluloco.nvim",
 }
