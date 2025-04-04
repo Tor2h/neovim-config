@@ -31,6 +31,8 @@ set("n", "<c-w>n", "<c-w>10<")
 set("n", "<c-w>m", "<c-w>10>")
 
 set("n", "<leader>te", ":tabedit<CR>", opts)
+set("n", "H", "^", opts)
+set("n", "L", "$", opts)
 set("n", "<left>", "gT")
 set("n", "<right>", "gt")
 

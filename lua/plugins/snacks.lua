@@ -49,7 +49,7 @@ return {
 	keys = {
 		-- Top Pickers & Explorer
 		{
-			"<leader><space>",
+			"<leader>e",
 			function()
 				Snacks.picker.smart()
 			end,
@@ -84,7 +84,7 @@ return {
 			desc = "Notification History",
 		},
 		{
-			"<leader>e",
+			"<leader>n",
 			function()
 				Snacks.explorer()
 			end,
@@ -442,7 +442,7 @@ return {
 			desc = "Select Scratch Buffer",
 		},
 		{
-			"<leader>n",
+			"<leader>un",
 			function()
 				Snacks.notifier.show_history()
 			end,
@@ -478,7 +478,7 @@ return {
 			desc = "Lazygit",
 		},
 		{
-			"<leader>un",
+			"<leader>uN",
 			function()
 				Snacks.notifier.hide()
 			end,

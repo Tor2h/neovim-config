@@ -127,6 +127,7 @@ return {
 				on_attach = function(client)
 					on_attach_no_format(client)
 				end,
+				filetypes = { "html", "htmlangular" },
 				capabilities = capabilities,
 			})
 
@@ -158,6 +159,7 @@ return {
 						"typescriptreact",
 						"typescript.tsx",
 						"html",
+						"htmlangular",
 					},
 				})
 			end
