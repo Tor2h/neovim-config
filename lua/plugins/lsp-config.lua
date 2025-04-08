@@ -151,6 +151,7 @@ return {
 					client.server_capabilities.documentFormattingRangeProvider = false
 					client.server_capabilities.referencesProvider = false
 					client.server_capabilities.completionProvider = false
+					client.server_capabilities.renameProvider = false
 				end,
 				capabilities = capabilities,
 				filetypes = {
@@ -190,6 +191,7 @@ return {
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentRangeFormattingProvider = false
 					client.server_capabilities.hoverProvider = false
+					client.server_capabilities.renameProvider = false
 				end,
 			})
 		end,
