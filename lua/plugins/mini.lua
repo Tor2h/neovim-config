@@ -31,4 +31,12 @@ return {
 			})
 		end,
 	},
+	-- {
+	-- 	"echasnovski/mini.statusline",
+	-- 	config = function()
+	-- 		require("mini.statusline").setup({
+	-- 			version = false,
+	-- 		})
+	-- 	end,
+	-- },
 }

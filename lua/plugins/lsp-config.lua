@@ -54,12 +54,6 @@ return {
 				client.server_capabilities.documentFormattingRangeProvider = false
 			end
 
-			local on_attach_no_format_no_references = function(client)
-				client.server_capabilities.documentFormattingProvider = false
-				client.server_capabilities.documentFormattingRangeProvider = false
-				client.server_capabilities.referencesProvider = false
-			end
-
 			local work_angular_path = "C:/Projekter/renomatic/Angular/renomatic"
 			local work_config_path = "C:/Users/tho/AppData/Local/nvim"
 			local personal_angular_path = "C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp"
@@ -108,7 +102,8 @@ return {
 				}
 				require("lspconfig").angularls.setup({
 					on_attach = function(client)
-						on_attach_no_format_no_references(client)
+						on_attach_no_format(client)
+						client.server_capabilities.referencesProvider = false
 					end,
 					capabilities = capabilities,
 					root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
@@ -120,6 +115,10 @@ return {
 			end
 
 			lspconfig.rust_analyzer.setup({
+				capabilities = capabilities,
+			})
+
+			lspconfig.marksman.setup({
 				capabilities = capabilities,
 			})
 
@@ -145,24 +144,27 @@ return {
 				end,
 			})
 
-			if current_config_dir == personal_config_path then
-				lspconfig.ts_ls.setup({
-					on_attach = function(client)
-						on_attach_no_format(client)
-					end,
-					capabilities = capabilities,
-					filetypes = {
-						"javascript",
-						"javascriptreact",
-						"javascript.jsx",
-						"typescript",
-						"typescriptreact",
-						"typescript.tsx",
-						"html",
-						"htmlangular",
-					},
-				})
-			end
+			-- if current_config_dir == personal_config_path then
+			lspconfig.ts_ls.setup({
+				on_attach = function(client)
+					client.server_capabilities.documentFormattingProvider = false
+					client.server_capabilities.documentFormattingRangeProvider = false
+					client.server_capabilities.referencesProvider = false
+					client.server_capabilities.completionProvider = false
+				end,
+				capabilities = capabilities,
+				filetypes = {
+					"javascript",
+					"javascriptreact",
+					"javascript.jsx",
+					"typescript",
+					"typescriptreact",
+					"typescript.tsx",
+					-- "html",
+					-- "htmlangular",
+				},
+			})
+			-- end
 
 			vim.keymap.set("n", "K", function()
 				vim.lsp.buf.hover({ border = "rounded" })
@@ -187,6 +189,7 @@ return {
 				on_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentRangeFormattingProvider = false
+					client.server_capabilities.hoverProvider = false
 				end,
 			})
 		end,

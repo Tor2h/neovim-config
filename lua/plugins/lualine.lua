@@ -47,35 +47,35 @@ return {
 		local kanagawa = {}
 
 		kanagawa.normal = {
-			a = { bg = nil, fg = theme.syn.fun },
-			b = { bg = nil, fg = theme.ui.bg },
-			c = { bg = nil, fg = theme.ui.fg },
+			a = { bg = "#000000", fg = theme.syn.fun },
+			b = { bg = "#000000", fg = theme.ui.bg },
+			c = { bg = "#000000", fg = theme.ui.fg },
 		}
 
 		kanagawa.insert = {
-			a = { bg = nil, fg = theme.diag.ok },
-			b = { bg = nil, fg = theme.ui.bg },
+			a = { bg = "#000000", fg = theme.diag.ok },
+			b = { bg = "#000000", fg = theme.ui.bg },
 		}
 
 		kanagawa.command = {
-			a = { bg = nil, fg = theme.syn.operator },
-			b = { bg = nil, fg = theme.ui.bg },
+			a = { bg = "#000000", fg = theme.syn.operator },
+			b = { bg = "#000000", fg = theme.ui.bg },
 		}
 
 		kanagawa.visual = {
-			a = { bg = nil, fg = theme.syn.keyword },
-			b = { bg = nil, fg = theme.ui.bg },
+			a = { bg = "#000000", fg = theme.syn.keyword },
+			b = { bg = "#000000", fg = theme.ui.bg },
 		}
 
 		kanagawa.replace = {
-			a = { bg = nil, fg = theme.syn.constant },
-			b = { bg = nil, fg = theme.ui.bg },
+			a = { bg = "#000000", fg = theme.syn.constant },
+			b = { bg = "#000000", fg = theme.ui.bg },
 		}
 
 		kanagawa.inactive = {
-			a = { bg = nil, fg = theme.ui.fg_dim },
-			b = { bg = nil, fg = theme.ui.fg_dim, gui = "bold" },
-			c = { bg = nil, fg = theme.ui.fg_dim },
+			a = { bg = "#000000", fg = theme.ui.fg_dim },
+			b = { bg = "#000000", fg = theme.ui.fg_dim, gui = "bold" },
+			c = { bg = "#000000", fg = theme.ui.fg_dim },
 		}
 
 		if vim.g.kanagawa_lualine_bold then
@@ -95,9 +95,10 @@ return {
 			},
 			sections = {
 				lualine_a = { mode },
-				lualine_b = { branch },
+				-- lualine_b = { branch, "filename" },
+				lualine_b = { "filename" },
 				lualine_c = { diff },
-				lualine_x = { diagnostics, "fileformat", "filetype" },
+				lualine_x = { diagnostics, "filetype", "fileformat" },
 				lualine_y = { "location" },
 				lualine_z = { progress },
 			},
