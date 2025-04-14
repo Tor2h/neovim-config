@@ -30,7 +30,7 @@ return {
 				explorer = {
 					auto_close = true,
 					jump = { close = true },
-					layout = { preset = "sidebar", preview = false },
+					layout = { preset = "default", preview = true },
 				},
 			},
 		},
