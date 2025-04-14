@@ -17,9 +17,9 @@ local M = {
 			auto_install = true,
 			highlight = { enable = true, additional_vim_regex_highlighting = false },
 			indent = { enable = true },
-			autotag = {
-				enable = true,
-			},
+			-- autotag = {
+			-- 	enable = true,
+			-- },
 		})
 	end,
 	require("ts_context_commentstring").setup({
