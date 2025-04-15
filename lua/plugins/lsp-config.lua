@@ -49,6 +49,7 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			capabilities.textDocument.completion.completionItem.snippetSupport = true
 			local on_attach_no_format = function(client)
 				client.server_capabilities.documentFormattingProvider = false
 				client.server_capabilities.documentFormattingRangeProvider = false
@@ -103,7 +104,6 @@ return {
 				require("lspconfig").angularls.setup({
 					on_attach = function(client)
 						on_attach_no_format(client)
-						client.server_capabilities.referencesProvider = false
 					end,
 					capabilities = capabilities,
 					root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
@@ -125,6 +125,7 @@ return {
 			lspconfig.html.setup({
 				on_attach = function(client)
 					on_attach_no_format(client)
+					client.server_capabilities.renameProvider = false
 				end,
 				filetypes = { "html", "htmlangular" },
 				capabilities = capabilities,
@@ -192,6 +193,7 @@ return {
 					client.server_capabilities.documentRangeFormattingProvider = false
 					client.server_capabilities.hoverProvider = false
 					client.server_capabilities.renameProvider = false
+					client.server_capabilities.referencesProvider = false
 				end,
 			})
 		end,
