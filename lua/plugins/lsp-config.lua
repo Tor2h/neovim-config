@@ -65,6 +65,9 @@ return {
 
 			if current_dir == personal_angular_path then
 				require("lspconfig").angularls.setup({
+					flags = {
+						debounce_text_changes = 150,
+					},
 					on_attach = function(client)
 						on_attach_no_format(client)
 					end,
@@ -153,6 +156,8 @@ return {
 					client.server_capabilities.referencesProvider = false
 					client.server_capabilities.completionProvider = false
 					client.server_capabilities.renameProvider = false
+					client.server_capabilities.diagnosticProvider = false
+          print("Diagnostics disabled for ts_ls")
 				end,
 				capabilities = capabilities,
 				filetypes = {
@@ -182,20 +187,22 @@ return {
 		end,
 	},
 
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
-		config = function()
-			require("typescript-tools").setup({
-				on_attach = function(client)
-					client.server_capabilities.documentFormattingProvider = false
-					client.server_capabilities.documentRangeFormattingProvider = false
-					client.server_capabilities.hoverProvider = false
-					client.server_capabilities.renameProvider = false
-					client.server_capabilities.referencesProvider = false
-				end,
-			})
-		end,
-	},
+	-- {
+	-- 	"pmizio/typescript-tools.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- 	opts = {},
+	-- 	config = function()
+	-- 		require("typescript-tools").setup({
+	-- 			on_attach = function(client)
+	-- 				client.server_capabilities.documentFormattingProvider = false
+	-- 				client.server_capabilities.documentRangeFormattingProvider = false
+	-- 				client.server_capabilities.hoverProvider = false
+	-- 				client.server_capabilities.renameProvider = false
+	-- 				client.server_capabilities.referencesProvider = false
+	-- 				client.server_capabilities.diagnosticProvider = false
+	--          print("Diagnostics disabled for ts-tools")
+	-- 			end,
+	-- 		})
+	-- 	end,
+	-- },
 }

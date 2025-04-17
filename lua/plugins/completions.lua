@@ -8,12 +8,6 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 		},
-		-- config = function()
-		-- 	local ls = require("luasnip")
-		-- 	ls.filetype_extend("htmlangular", { "html" })
-		-- 	-- Load friendly-snippets
-		-- 	require("luasnip.loaders.from_vscode").lazy_load({ include = { "html" } })
-		-- end,
 	},
 
 	{
@@ -47,6 +41,7 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local luasnip = require("luasnip")
+			luasnip.filetype_extend("htmlangular", { "html" })
 			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup({

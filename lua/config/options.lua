@@ -42,7 +42,13 @@ global.python_host_skip_check = 1
 global.python3_host_skip_check = 1
 
 o.updatetime = 50
-vim.diagnostic.config({ signs = false })
+--vim.diagnostic.config({ signs = false })
+vim.diagnostic.config({
+	-- virtual_text = false, -- Disable inline text if it clutters the UI
+	float = {
+		source = "if_many", -- Show the source of diagnostics only if there are multiple
+	},
+})
 
 --global.skip_ts_context_commentstring_module = true
 vim.cmd([[syntax on]])
