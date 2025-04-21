@@ -151,9 +151,7 @@ return {
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentFormattingRangeProvider = false
 					client.server_capabilities.referencesProvider = false
-					client.server_capabilities.completionProvider = false
 					client.server_capabilities.renameProvider = false
-					-- client.server_capabilities.diagnosticProvider = false
 				end,
 				capabilities = capabilities,
 				filetypes = {
@@ -180,23 +178,6 @@ return {
 			-- vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "Implementation" })
 			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature help" })
 			vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Definition" })
-		end,
-	},
-
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
-		config = function()
-			require("typescript-tools").setup({
-				on_attach = function(client)
-					client.server_capabilities.documentFormattingProvider = false
-					client.server_capabilities.documentRangeFormattingProvider = false
-					client.server_capabilities.hoverProvider = false
-					client.server_capabilities.renameProvider = false
-					client.server_capabilities.referencesProvider = false
-				end,
-			})
 		end,
 	},
 }
