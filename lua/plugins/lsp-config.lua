@@ -24,6 +24,7 @@ return {
 				"ts_ls",
 				"html",
 				"cssls",
+        "nil_ls",
 				"roslyn@5.0.0-1.25153.5",
 			},
 			auto_install = true,
@@ -147,6 +148,14 @@ return {
 					on_attach_no_format(client)
 				end,
 			})
+
+      lspconfig.nil_ls.setup({
+        capabilities = capabilities,
+      })
+
+      lspconfig.rnix.setup({
+        capabilities = capabilities,
+      })
 
 			-- if current_config_dir == personal_config_path then
 			lspconfig.ts_ls.setup({
