@@ -3,13 +3,13 @@ return {
 		"mfussenegger/nvim-dap",
 		dependencies = {
 			"rcarriga/nvim-dap-ui",
-			"mxsdev/nvim-dap-vscode-js",
+			"theHamsta/nvim-dap-virtual-text",
 			"nvim-neotest/nvim-nio",
-			-- build debugger from source
+			"williamboman/mason.nvim",
 			{
 				"microsoft/vscode-js-debug",
 				version = "1.x",
-				build = "npm i && npm run compile vsDebugServerBundle && mv dist out",
+				build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
 			},
 		},
 		keys = {
@@ -46,74 +46,70 @@ return {
 			-- },
 		},
 		config = function()
+			local dap = require("dap")
+			local ui = require("dapui")
+			require("vscode-js-debug").setup({})
+
+			require("dapui").setup()
 			require("dap-vscode-js").setup({
-				debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
+				-- debugger_path = vim.fn.stdpath("data") .. "/lazy/vscode-js-debug",
 				adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
 			})
 
-			for _, language in ipairs({ "typescript", "javascript", "svelte" }) do
-				require("dap").configurations[language] = {
-					-- attach to a node process that has been started with
-					-- `--inspect` for longrunning tasks or `--inspect-brk` for short tasks
-					-- npm script -> `node --inspect-brk ./node_modules/.bin/vite dev`
+			require("nvim-dap-virtual-text").setup({
+				-- This just tries to mitigate the chance that I leak tokens here. Probably won't stop it from happening...
+				display_callback = function(variable)
+					local name = string.lower(variable.name)
+					local value = string.lower(variable.value)
+					if name:match("secret") or name:match("api") or value:match("secret") or value:match("api") then
+						return "*****"
+					end
+
+					if #variable.value > 15 then
+						return " " .. string.sub(variable.value, 1, 15) .. "... "
+					end
+
+					return " " .. variable.value
+				end,
+			})
+
+			for _, language in ipairs({ "typescript", "javascript" }) do
+				dap.configurations[language] = {
 					{
-						-- use nvim-dap-vscode-js's pwa-node debug adapter
 						type = "pwa-node",
-						-- attach to an already running node process with --inspect flag
-						-- default port: 9222
-						request = "attach",
-						-- allows us to pick the process using a picker
-						processId = require("dap.utils").pick_process,
-						-- name of the debug action you have to select for this config
-						name = "Attach debugger to existing `node --inspect` process",
-						-- for compiled languages like TypeScript or Svelte.js
+						request = "launch",
+						name = "Launch file",
+						program = "${file}",
+						cwd = "${workspaceFolder}",
 						sourceMaps = true,
-						-- resolve source maps in nested locations while ignoring node_modules
-						resolveSourceMapLocations = {
-							"${workspaceFolder}/**",
-							"!**/node_modules/**",
-						},
-						-- path to src in vite based projects (and most other projects as well)
-						cwd = "${workspaceFolder}/src",
-						-- we don't want to debug code inside node_modules, so skip it!
-						skipFiles = { "${workspaceFolder}/node_modules/**/*.js" },
+						skipFiles = { "<node_internals>/**", "node_modules/**" },
 					},
 					{
-						type = "pwa-chrome",
-						name = "Launch Chrome to debug client",
-						request = "launch",
-						url = "http://localhost:5173",
-						sourceMaps = true,
-						protocol = "inspector",
-						port = 9222,
-						webRoot = "${workspaceFolder}/src",
-						-- skip files from vite's hmr
-						skipFiles = { "**/node_modules/**/*", "**/@vite/*", "**/src/client/*", "**/src/*" },
+						type = "pwa-node",
+						request = "attach",
+						name = "Attach",
+						processId = require("dap.utils").pick_process,
+						cwd = "${workspaceFolder}",
 					},
-					-- only if language is javascript, offer this debug action
-					language == "javascript"
-							and {
-								-- use nvim-dap-vscode-js's pwa-node debug adapter
-								type = "pwa-node",
-								-- launch a new process to attach the debugger to
-								request = "launch",
-								-- name of the debug action you have to select for this config
-								name = "Launch file in new node process",
-								-- launch current file
-								program = "${file}",
-								cwd = "${workspaceFolder}",
-							}
-						or nil,
 				}
 			end
 
-			require("dapui").setup()
-			local dap, dapui = require("dap"), require("dapui")
-			dap.listeners.after.event_initialized["dapui_config"] = function()
-				dapui.open({ reset = true })
+			vim.keymap.set("n", "<space>?", function()
+				require("dapui").eval(nil, { enter = true })
+			end)
+
+			dap.listeners.before.attach.dapui_config = function()
+				ui.open()
 			end
-			dap.listeners.before.event_terminated["dapui_config"] = dapui.close
-			dap.listeners.before.event_exited["dapui_config"] = dapui.close
+			dap.listeners.before.launch.dapui_config = function()
+				ui.open()
+			end
+			dap.listeners.before.event_terminated.dapui_config = function()
+				ui.close()
+			end
+			dap.listeners.before.event_exited.dapui_config = function()
+				ui.close()
+			end
 		end,
 	},
 	-- {
