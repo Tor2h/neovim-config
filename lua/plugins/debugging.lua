@@ -45,6 +45,40 @@ return {
 
 			require("dapui").setup()
 
+			dap.adapters["pwa-node"] = {
+				type = "server",
+				host = "localhost",
+				port = "${port}",
+				executable = {
+					command = "npm",
+					-- 💀 Make sure to update this path to point to your installation
+					args = {
+						vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter/js-debug/src/dapDebugServer.js",
+						"${port}",
+					},
+				},
+			}
+
+			dap.configurations.javascript = {
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "Launch file",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+				},
+			}
+
+			dap.configurations.typescript = {
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "Launch file",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+				},
+			}
+
 			dap.configurations.cs = {
 				{
 					type = "coreclr",
