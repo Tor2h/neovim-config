@@ -24,7 +24,6 @@ return {
 				"ts_ls",
 				"html",
 				"cssls",
-        "nil_ls",
 				"roslyn@5.0.0-1.25153.5",
 			},
 			auto_install = true,
@@ -65,7 +64,7 @@ return {
 			local current_config_dir = vim.fn.stdpath("config"):gsub("\\", "/")
 
 			if current_dir == personal_angular_path then
-				require("lspconfig").angularls.setup({
+				vim.lsp.config("angularls", {
 					on_attach = function(client)
 						on_attach_no_format(client)
 					end,
@@ -102,7 +101,7 @@ return {
 					"--ngProbeLocations",
 					project_library_path,
 				}
-				require("lspconfig").angularls.setup({
+				vim.lsp.config("angularls", {
 					on_attach = function(client)
 						on_attach_no_format(client)
 					end,
@@ -115,15 +114,15 @@ return {
 				})
 			end
 
-			lspconfig.rust_analyzer.setup({
+			vim.lsp.config("rust_analyzer", {
 				capabilities = capabilities,
 			})
 
-			lspconfig.marksman.setup({
+			vim.lsp.config("marksman", {
 				capabilities = capabilities,
 			})
 
-			lspconfig.html.setup({
+			vim.lsp.config("html", {
 				on_attach = function(client)
 					on_attach_no_format(client)
 					client.server_capabilities.renameProvider = false
@@ -132,30 +131,26 @@ return {
 				capabilities = capabilities,
 			})
 
-			lspconfig.cssls.setup({
+			vim.lsp.config("cssls", {
 				on_attach = function(client)
 					on_attach_no_format(client)
 				end,
 				capabilities = capabilities,
 			})
 
-			lspconfig.lua_ls.setup({
+			vim.lsp.config("lua_ls", {
 				capabilities = capabilities,
 				on_attach = function(client)
 					on_attach_no_format(client)
 				end,
 			})
 
-      lspconfig.nil_ls.setup({
-        capabilities = capabilities,
-      })
-
-      lspconfig.rnix.setup({
-        capabilities = capabilities,
-      })
+			vim.lsp.config("rnix", {
+				capabilities = capabilities,
+			})
 
 			-- if current_config_dir == personal_config_path then
-			lspconfig.ts_ls.setup({
+			vim.lsp.config("ts_ls", {
 				on_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentFormattingRangeProvider = false
