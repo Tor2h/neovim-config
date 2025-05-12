@@ -105,8 +105,8 @@ return {
 					on_attach = function(client)
 						on_attach_no_format(client)
 					end,
-					capabilities = capabilities,
-					root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
+					-- capabilities = capabilities,
+					-- root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
 					cmd = cmd,
 					on_new_config = function(new_config, new_root_dir)
 						new_config.cmd = cmd
