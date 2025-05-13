@@ -45,6 +45,64 @@ return {
 
 			require("dapui").setup()
 
+			dap.adapters.chrome = {
+				type = "executable",
+				command = "node",
+				args = { vim.fn.stdpath("data") .. "/mason/packages/chrome-debug-adapters/src/chromeDebug.ts" },
+			}
+
+			dap.configurations.javascript = {
+				{
+					type = "chrome",
+					request = "attach",
+					program = "${file}",
+					cwd = vim.fn.getcwd(),
+					sourceMaps = true,
+					protocol = "inspector",
+					port = 9222,
+					webRoot = "${workspaceFolder}",
+				},
+			}
+
+			dap.configurations.javascriptreact = {
+				{
+					type = "chrome",
+					request = "attach",
+					program = "${file}",
+					cwd = vim.fn.getcwd(),
+					sourceMaps = true,
+					protocol = "inspector",
+					port = 9222,
+					webRoot = "${workspaceFolder}",
+				},
+			}
+
+			dap.configurations.typescript = {
+				{
+					type = "chrome",
+					request = "attach",
+					program = "${file}",
+					cwd = vim.fn.getcwd(),
+					sourceMaps = true,
+					protocol = "inspector",
+					port = 9222,
+					webRoot = "${workspaceFolder}",
+				},
+			}
+
+			dap.configurations.typescriptreact = {
+				{
+					type = "chrome",
+					request = "attach",
+					program = "${file}",
+					cwd = vim.fn.getcwd(),
+					sourceMaps = true,
+					protocol = "inspector",
+					port = 9222,
+					webRoot = "${workspaceFolder}",
+				},
+			}
+
 			dap.adapters["pwa-node"] = {
 				type = "server",
 				host = "localhost",
@@ -59,25 +117,25 @@ return {
 				},
 			}
 
-			dap.configurations.javascript = {
-				{
-					type = "pwa-node",
-					request = "launch",
-					name = "Launch file",
-					program = "${file}",
-					cwd = "${workspaceFolder}",
-				},
-			}
-
-			dap.configurations.typescript = {
-				{
-					type = "pwa-node",
-					request = "launch",
-					name = "Launch file",
-					program = "${file}",
-					cwd = "${workspaceFolder}",
-				},
-			}
+			-- dap.configurations.javascript = {
+			-- 	{
+			-- 		type = "pwa-node",
+			-- 		request = "launch",
+			-- 		name = "Launch file",
+			-- 		program = "${file}",
+			-- 		cwd = "${workspaceFolder}",
+			-- 	},
+			-- }
+			--
+			-- dap.configurations.typescript = {
+			-- 	{
+			-- 		type = "pwa-node",
+			-- 		request = "launch",
+			-- 		name = "Launch file",
+			-- 		program = "${file}",
+			-- 		cwd = "${workspaceFolder}",
+			-- 	},
+			-- }
 
 			dap.configurations.cs = {
 				{

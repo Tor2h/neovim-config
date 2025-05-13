@@ -40,6 +40,14 @@ set("n", "<leader>x", vim.diagnostic.open_float, { desc = "Error diagnostic" })
 
 set("n", "<leader>ge", vim.diagnostic.goto_next, { desc = "Next Error" })
 
+set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+
+set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+
 set("n", "<CR>", function()
 	---@diagnostic disable-next-line: undefined-field
 	if vim.v.hlsearch == 1 then

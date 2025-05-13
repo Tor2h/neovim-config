@@ -49,6 +49,14 @@ return {
 	keys = {
 		-- Top Pickers & Explorer
 		{
+			"<leader>h",
+			function()
+				Snacks.picker.yanky()
+			end,
+			mode = { "n", "x" },
+			desc = "Open Yank History",
+		},
+		{
 			"<leader>e",
 			function()
 				Snacks.picker.smart()
