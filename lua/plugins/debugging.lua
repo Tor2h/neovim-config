@@ -137,14 +137,35 @@ return {
 			-- 	},
 			-- }
 
+			dap.adapters.coreclr = {
+				type = "executable",
+				command = vim.fn.stdpath("data") .. "/mason/packages/netcoredbg/netcoredbg",
+				args = { "--interpreter=vscode" },
+			}
+
 			dap.configurations.cs = {
 				{
 					type = "coreclr",
-					name = "launch - netcoredbg",
-					request = "launch",
-					program = function()
-						return vim.fn.input(vim.fn.getcwd():gsub("\\", "/"), vim.fn.getcwd() .. "/bin/Debug/", "file")
+					name = "attach - netcoredbg",
+					request = "attach",
+					processId = function()
+						local output = vim.fn.system(
+							" ps aux | grep '[d]otnet ' | grep 'DOTNET_MODIFIABLE_ASSEMBLIES=debug' | awk '{print $2}'"
+						)
+						output = vim.trim(output)
+
+						-- Debug output
+						print("Process Output: ", output)
+
+						local pid = tonumber(output)
+						print("Process ID: ", pid)
+
+						return pid
 					end,
+					-- program = function()
+					-- 	local default_path = vim.fn.getcwd() .. "/bin/Debug/net9.0/webapi.dll"
+					-- 	return vim.fn.input("Path to DLL: ", default_path, "file")
+					-- end,
 				},
 			}
 
@@ -158,12 +179,12 @@ return {
 			dap.listeners.before.launch.dapui_config = function()
 				ui.open()
 			end
-			dap.listeners.before.event_terminated.dapui_config = function()
-				ui.close()
-			end
-			dap.listeners.before.event_exited.dapui_config = function()
-				ui.close()
-			end
+			-- dap.listeners.before.event_terminated.dapui_config = function()
+			-- 	ui.close()
+			-- end
+			-- dap.listeners.before.event_exited.dapui_config = function()
+			-- 	ui.close()
+			-- end
 		end,
 	},
 }
