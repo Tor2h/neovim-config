@@ -49,7 +49,7 @@ return {
 	keys = {
 		-- Top Pickers & Explorer
 		{
-			"<leader>h",
+			"<leader>hh",
 			function()
 				Snacks.picker.yanky()
 			end,
