@@ -12,19 +12,42 @@ return {
 						colorscheme = "kanagawa",
 					},
 					{
-						name = "Vague",
-						colorscheme = "vague",
+						name = "Zenbones",
+						colorscheme = "kanagawa-paper",
 					},
 				},
 				vim.keymap.set("n", "<leader>tt", function()
 					local themery = require("themery")
 					local currentTheme = themery.getCurrentTheme()
 					if currentTheme and currentTheme.name == "Kanagawa" then
-						themery.setThemeByName("Vague", true)
+						themery.setThemeByName("Zenbones", true)
 					else
 						themery.setThemeByName("Kanagawa", true)
 					end
 				end, { noremap = true, desc = "Change theme" }),
+			})
+		end,
+	},
+	{
+		"thesimonho/kanagawa-paper.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+		config = function()
+			require("kanagawa-paper").setup({
+				transparent = true,
+				colors = {
+					palette = {
+						sumiInkn1 = "#0f0f15",
+						sumiInk0 = "#000000",
+						sumiInk1 = "#181820",
+						sumiInk2 = "#1a1a22",
+						sumiInk3 = "#1F1F28",
+						sumiInk4 = "#000000",
+						sumiInk5 = "#363646",
+						sumiInk6 = "#54546D",
+					},
+				},
 			})
 		end,
 	},
