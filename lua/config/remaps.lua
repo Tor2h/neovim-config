@@ -36,7 +36,9 @@ set("n", "L", "$", opts)
 set("n", "<left>", "gT")
 set("n", "<right>", "gt")
 
-set("n", "<leader>x", vim.diagnostic.open_float, { desc = "Error diagnostic" })
+set("n", "<leader>x", function()
+	vim.diagnostic.open_float({ border = "rounded" })
+end, { desc = "Error diagnostic" })
 
 set("n", "<leader>ge", vim.diagnostic.goto_next, { desc = "Next Error" })
 
