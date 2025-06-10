@@ -40,7 +40,13 @@ set("n", "<leader>x", function()
 	vim.diagnostic.open_float({ border = "rounded" })
 end, { desc = "Error diagnostic" })
 
-set("n", "<leader>ge", vim.diagnostic.goto_next, { desc = "Next Error" })
+set("n", "<leader>ge", function()
+	vim.diagnostic.jump({ count = 1, float = { border = "rounded" } })
+end, { desc = "Next Error" })
+
+set("n", "<leader>gE", function()
+	vim.diagnostic.jump({ count = -1, float = { border = "rounded" } })
+end, { desc = "Previous Error" })
 
 set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
 set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
