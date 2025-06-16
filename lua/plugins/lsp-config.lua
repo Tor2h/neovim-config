@@ -122,6 +122,13 @@ return {
 				})
 			end
 
+			vim.lsp.config("jsonls", {
+				on_attach = function(client)
+					on_attach_no_format(client)
+				end,
+				capabilities = capabilities,
+			})
+
 			vim.lsp.config("rust_analyzer", {
 				capabilities = capabilities,
 			})
