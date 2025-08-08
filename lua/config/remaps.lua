@@ -5,6 +5,9 @@ local opts = { noremap = true, silent = true }
 set("v", "J", ":m '>+1<CR>gv=gv")
 set("v", "K", ":m '<-2<CR>gv=gv")
 
+set("v", "<", "<gv", { desc = "Indent left and reselect" })
+set("v", ">", ">gv", { desc = "Indent right and reselect" })
+
 set("n", "<C-d>", "<C-d>zz")
 set("n", "<C-u>", "<C-u>zz")
 set("n", "n", "nzzzv")
