@@ -21,6 +21,9 @@ set("v", "<leader>y", '"+y')
 set("v", "<leader>d", '"_d')
 set("n", "<leader>d", '"_d')
 
+set("v", "<leader>c", '"_c')
+set("n", "<leader>c", '"_c')
+
 set("n", "<leader>i", "<C-]>", opts)
 
 set("n", "<c-j>", "<c-w><c-j>")

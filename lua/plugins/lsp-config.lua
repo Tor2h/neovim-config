@@ -32,7 +32,6 @@ return {
 				"ts_ls",
 				"html",
 				"cssls",
-				"roslyn@5.0.0-1.25153.5",
 			},
 			auto_install = true,
 		},
@@ -42,12 +41,18 @@ return {
 		"seblyng/roslyn.nvim",
 		ft = "cs",
 		opts = {
-			config = {
+			vim.lsp.config("roslyn", {
 				on_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentFormattingRangeProvider = false
 				end,
-			},
+			}),
+			-- config = {
+			-- on_attach = function(client)
+			-- 	client.server_capabilities.documentFormattingProvider = false
+			-- 	client.server_capabilities.documentFormattingRangeProvider = false
+			-- end,
+			-- },
 		},
 	},
 
@@ -100,7 +105,7 @@ return {
 			end
 
 			if current_config_dir == work_config_path then
-				local project_library_path = "C:/Projekter/renomatic/Angular/renomatic/"
+				local project_library_path = "C:/Projekter/renomatic/Angular/renomatic"
 				local cmd = {
 					"ngserver",
 					"--stdio",
@@ -169,7 +174,7 @@ return {
 				on_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentFormattingRangeProvider = false
-					client.server_capabilities.referencesProvider = false
+					-- client.server_capabilities.referencesProvider = false
 					client.server_capabilities.renameProvider = false
 				end,
 				capabilities = capabilities,
