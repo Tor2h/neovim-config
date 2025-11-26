@@ -13,7 +13,7 @@ local M = {
 	config = function()
 		local config = require("nvim-treesitter.configs")
 		config.setup({
-			ensure_installed = { "c_sharp", "html", "javascript", "typescript", "tsx", "css", "rust" },
+			ensure_installed = { "c_sharp", "html", "javascript", "typescript", "tsx", "css", "rust", "typst" },
 			auto_install = true,
 			highlight = { enable = true, additional_vim_regex_highlighting = false },
 			indent = { enable = true },

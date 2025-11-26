@@ -32,6 +32,7 @@ return {
 				"ts_ls",
 				"html",
 				"cssls",
+				"tinymist",
 			},
 			auto_install = true,
 		},
@@ -140,6 +141,13 @@ return {
 
 			vim.lsp.config("marksman", {
 				capabilities = capabilities,
+			})
+
+			vim.lsp.config("tinymist", {
+				capabilities = capabilities,
+				settings = {
+					formatterMode = "typstyle",
+				},
 			})
 
 			vim.lsp.config("html", {
