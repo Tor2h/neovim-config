@@ -47,35 +47,35 @@ return {
 		local kanagawa = {}
 
 		kanagawa.normal = {
-			a = { bg = "#000000", fg = theme.syn.fun },
-			b = { bg = "#000000", fg = theme.ui.bg },
-			c = { bg = "#000000", fg = theme.ui.fg },
+			a = { bg = "NONE", fg = theme.syn.fun },
+			b = { bg = "NONE", fg = theme.ui.bg },
+			c = { bg = "NONE", fg = theme.ui.fg },
 		}
 
 		kanagawa.insert = {
-			a = { bg = "#000000", fg = theme.diag.ok },
-			b = { bg = "#000000", fg = theme.ui.bg },
+			a = { bg = "NONE", fg = theme.diag.ok },
+			b = { bg = "NONE", fg = theme.ui.bg },
 		}
 
 		kanagawa.command = {
-			a = { bg = "#000000", fg = theme.syn.operator },
-			b = { bg = "#000000", fg = theme.ui.bg },
+			a = { bg = "NONE", fg = theme.syn.operator },
+			b = { bg = "NONE", fg = theme.ui.bg },
 		}
 
 		kanagawa.visual = {
-			a = { bg = "#000000", fg = theme.syn.keyword },
-			b = { bg = "#000000", fg = theme.ui.bg },
+			a = { bg = "NONE", fg = theme.syn.keyword },
+			b = { bg = "NONE", fg = theme.ui.bg },
 		}
 
 		kanagawa.replace = {
-			a = { bg = "#000000", fg = theme.syn.constant },
-			b = { bg = "#000000", fg = theme.ui.bg },
+			a = { bg = "NONE", fg = theme.syn.constant },
+			b = { bg = "NONE", fg = theme.ui.bg },
 		}
 
 		kanagawa.inactive = {
-			a = { bg = "#000000", fg = theme.ui.fg_dim },
-			b = { bg = "#000000", fg = theme.ui.fg_dim, gui = "bold" },
-			c = { bg = "#000000", fg = theme.ui.fg_dim },
+			a = { bg = "NONE", fg = theme.ui.fg_dim },
+			b = { bg = "NONE", fg = theme.ui.fg_dim, gui = "bold" },
+			c = { bg = "NONE", fg = theme.ui.fg_dim },
 		}
 
 		if vim.g.kanagawa_lualine_bold then

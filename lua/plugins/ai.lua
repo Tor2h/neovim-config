@@ -1,0 +1,30 @@
+return {
+	-- {
+	-- 	"github/copilot.vim",
+	-- },
+	-- {
+	-- 	"CopilotC-Nvim/CopilotChat.nvim",
+	-- 	dependencies = {
+	-- 		{ "nvim-lua/plenary.nvim", branch = "master" },
+	-- 	},
+	-- 	build = "make tiktoken",
+	-- 	opts = {
+	-- 		model = "gpt-4.1", -- AI model to use
+	-- 		temperature = 0.1, -- Lower = focused, higher = creative
+	-- 		window = {
+	-- 			layout = "vertical", -- 'vertical', 'horizontal', 'float'
+	-- 			width = 0.5, -- 50% of screen width
+	-- 		},
+	-- 		auto_insert_mode = true, -- Enter insert mode when opening
+	-- 		-- See Configuration section for options
+	-- 	},
+	-- 	vim.keymap.set("n", "<leader>ac", function()
+	-- 		local input = vim.fn.input("Quick Chat: ")
+	-- 		if input ~= "" then
+	-- 			require("CopilotChat").ask(input, {
+	-- 				selection = require("CopilotChat.select").buffer,
+	-- 			})
+	-- 		end
+	-- 	end, { desc = "CopilotChat - Quick chat" }),
+	-- },
+}

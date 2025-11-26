@@ -1,0 +1,34 @@
+return {
+	{
+		"Equilibris/nx.nvim",
+
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+		},
+
+		opts = {
+			-- See below for config options
+			-- nx_cmd_root = "npx nx",
+			-- - `npm nx`
+			-- - `yarn nx`
+			-- - `pnpm nx`
+			nx_cmd_root = "nx",
+
+			-- Command running capabilities,
+			-- see nx.m.command-runners for more details
+			-- command_runner = require("nx.command-runners").terminal_cmd(),
+			-- Form rendering capabilities,
+			-- see nx.m.form-renderers for more detials
+			-- form_renderer = require("nx.form-renderers").telescope(),
+
+			-- Whether or not to load nx configuration,
+			-- see nx.loading-and-reloading for more details
+			read_init = true,
+		},
+
+		-- Plugin will load when you use these keys
+		keys = {
+			{ "<leader>hx", "<cmd>Telescope nx actions<CR>", desc = "nx actions" },
+		},
+	},
+}

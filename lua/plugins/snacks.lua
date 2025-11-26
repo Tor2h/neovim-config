@@ -25,6 +25,7 @@ return {
 			timeout = 3000,
 		},
 		picker = {
+			hidden = true,
 			enabled = true,
 			sources = {
 				explorer = {
