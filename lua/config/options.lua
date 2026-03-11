@@ -38,22 +38,21 @@ global.neovide_title_background_color = "black"
 global.neovide_hide_mouse_when_typing = true
 global.neovide_refresh_rate = 60
 
-vim.g.loaded_python3_provider = 0
-vim.g.loaded_perl_provider = 0  -- Also disable if not needed
+global.python_host_skip_check = 1
+global.python3_host_skip_check = 1
 
 o.updatetime = 50
 --vim.diagnostic.config({ signs = false })
+---- Recommended settings for 0.11.6
 vim.diagnostic.config({
-    signs = true,  -- Enable signs in gutter
-    underline = true,
-    severity_sort = true,  -- Sort by severity
-    float = {
-        source = "if_many",
-        border = "rounded",
-    },
-    virtual_text = {
-        prefix = "●",
-        spacing = 4,
-    },
-    update_in_insert = false,  -- Don't update while typing
+	virtual_text = { prefix = "●" },
+	underline = true,
+	signs = false, -- Reduce clutter if using gutter signs elsewhere
+	float = {
+		source = "if_many", -- Show the source of diagnostics only if there are multiple
+	},
 })
+
+o.swapfile = false
+o.backup = false
+o.undofile = false

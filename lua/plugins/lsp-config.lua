@@ -24,7 +24,6 @@ return {
 				"ts_ls",
 				"html",
 				"cssls",
-				-- "tinymist",
 			},
 			auto_install = true,
 		},
@@ -165,7 +164,6 @@ return {
 				on_attach = function(client)
 					client.server_capabilities.documentFormattingProvider = false
 					client.server_capabilities.documentFormattingRangeProvider = false
-					-- client.server_capabilities.referencesProvider = false
 					client.server_capabilities.renameProvider = false
 				end,
 				capabilities = capabilities,
@@ -176,11 +174,8 @@ return {
 					"typescript",
 					"typescriptreact",
 					"typescript.tsx",
-					-- "html",
-					-- "htmlangular",
 				},
 			})
-			-- end
 
 			vim.keymap.set("n", "K", function()
 				vim.lsp.buf.hover({ border = "rounded" })

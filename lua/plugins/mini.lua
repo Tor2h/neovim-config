@@ -1,24 +1,36 @@
 return {
 	{
 		"echasnovski/mini.ai",
-    version = false,
-    opts = {},
-  },
+		config = function()
+			require("mini.ai").setup({
+				version = false,
+			})
+		end,
+	},
 	{
 		"echasnovski/mini.surround",
-    version = false,
-    opts = {},
+		config = function()
+			require("mini.surround").setup({
+				version = false,
+			})
+		end,
 	},
 	{
 		"echasnovski/mini.sessions",
-    version = false,
-    opts = {},
+		config = function()
+			require("mini.sessions").setup({
+				version = false,
+			})
+		end,
 	},
 	{
 		"echasnovski/mini.pairs",
-    version = false,
-    opts = {},
-	}
+		config = function()
+			require("mini.pairs").setup({
+				version = false,
+			})
+		end,
+	},
 	-- {
 	-- 	"echasnovski/mini.statusline",
 	-- 	config = function()

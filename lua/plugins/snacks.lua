@@ -46,6 +46,39 @@ return {
 				wo = { wrap = true }, -- Wrap notifications
 			},
 		},
+    zen = {
+    toggles = {
+        dim = false,
+        git_signs = true,
+        mini_diff_signs = true,
+        -- diagnostics = false,
+        -- inlay_hints = false,
+      },
+      center = true, -- center the window
+      show = {
+        statusline = true, -- can only be shown when using the global statusline
+        tabline = true,
+      },
+      ---@type snacks.win.Config
+      win = { style = "zen" },
+      --- Callback when the window is opened.
+      ---@param win snacks.win
+      on_open = function(win) end,
+      --- Callback when the window is closed.
+      ---@param win snacks.win
+      on_close = function(win) end,
+      --- Options for the `Snacks.zen.zoom()`
+      ---@type snacks.zen.Config
+      zoom = {
+        toggles = {},
+        center = false,
+        show = { statusline = true, tabline = true },
+        win = {
+          backdrop = false,
+          width = 0, -- full width
+        },
+      },
+    }
 	},
 	keys = {
 		-- Top Pickers & Explorer
@@ -115,7 +148,7 @@ return {
 			desc = "Find Config File",
 		},
 		{
-			"<leader>ff",
+			"<leader><CR>",
 			function()
 				Snacks.picker.files()
 			end,
@@ -422,13 +455,13 @@ return {
 			desc = "LSP Workspace Symbols",
 		},
 		-- Other
-		{
-			"<leader>z",
-			function()
-				Snacks.zen()
-			end,
-			desc = "Toggle Zen Mode",
-		},
+		-- {
+		-- 	"<leader>z",
+		-- 	function()
+		-- 		Snacks.zen()
+		-- 	end,
+		-- 	desc = "Toggle Zen Mode",
+		-- },
 		{
 			"<leader>Z",
 			function()
