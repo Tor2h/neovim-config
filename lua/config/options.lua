@@ -38,18 +38,22 @@ global.neovide_title_background_color = "black"
 global.neovide_hide_mouse_when_typing = true
 global.neovide_refresh_rate = 60
 
-global.python_host_skip_check = 1
-global.python3_host_skip_check = 1
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_perl_provider = 0  -- Also disable if not needed
 
 o.updatetime = 50
 --vim.diagnostic.config({ signs = false })
 vim.diagnostic.config({
-	-- virtual_text = false, -- Disable inline text if it clutters the UI
-	float = {
-		source = "if_many", -- Show the source of diagnostics only if there are multiple
-	},
+    signs = true,  -- Enable signs in gutter
+    underline = true,
+    severity_sort = true,  -- Sort by severity
+    float = {
+        source = "if_many",
+        border = "rounded",
+    },
+    virtual_text = {
+        prefix = "●",
+        spacing = 4,
+    },
+    update_in_insert = false,  -- Don't update while typing
 })
-
---global.skip_ts_context_commentstring_module = true
-vim.cmd([[syntax on]])
-vim.cmd([[filetype plugin indent on]])

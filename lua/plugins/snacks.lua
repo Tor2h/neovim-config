@@ -31,7 +31,7 @@ return {
 				explorer = {
 					auto_close = true,
 					jump = { close = true },
-					layout = { preset = "default", preview = true },
+					layout = { preset = "default", preview = false },
 				},
 			},
 		},

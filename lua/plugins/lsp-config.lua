@@ -15,24 +15,16 @@ return {
 		end,
 	},
 
-	-- {
-	-- 	"jay-babu/mason-nvim-dap.nvim",
-	-- 	lazy = false,
-	-- 	config = function()
-	-- 		require("mason-nvim-dap").setup()
-	-- 	end,
-	-- },
-
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
 		opts = {
 			ensure_installed = {
-				"angularls@17.3.5",
+				"angularls",
 				"ts_ls",
 				"html",
 				"cssls",
-				"tinymist",
+				-- "tinymist",
 			},
 			auto_install = true,
 		},
@@ -48,12 +40,6 @@ return {
 					client.server_capabilities.documentFormattingRangeProvider = false
 				end,
 			}),
-			-- config = {
-			-- on_attach = function(client)
-			-- 	client.server_capabilities.documentFormattingProvider = false
-			-- 	client.server_capabilities.documentFormattingRangeProvider = false
-			-- end,
-			-- },
 		},
 	},
 
@@ -61,7 +47,6 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
-			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			capabilities.textDocument.completion.completionItem.snippetSupport = true
 			local on_attach_no_format = function(client)
@@ -69,10 +54,8 @@ return {
 				client.server_capabilities.documentFormattingRangeProvider = false
 			end
 
-			local work_angular_path = "C:/Projekter/renomatic/Angular/renomatic"
-			local work_config_path = "C:/Users/tho/AppData/Local/nvim"
+			local work_config_path = "C:/Users/th004/AppData/Local/nvim"
 			local personal_angular_path = "C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp"
-			local personal_config_path = "C:/Users/Tor/AppData/Local/nvim"
 
 			local current_dir = vim.fn.getcwd():gsub("\\", "/")
 			local current_config_dir = vim.fn.stdpath("config"):gsub("\\", "/")

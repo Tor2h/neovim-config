@@ -2,7 +2,7 @@ return {
 	-- the colorscheme should be available when starting Neovim
 	{
 		"zaldih/themery.nvim",
-		lazy = false,
+		lazy = true,
 		config = function()
 			require("themery").setup({
 				-- add the config here
@@ -16,21 +16,21 @@ return {
 						colorscheme = "rose-pine",
 					},
 				},
-				vim.keymap.set("n", "<leader>tt", function()
-					local themery = require("themery")
-					local currentTheme = themery.getCurrentTheme()
-					if currentTheme and currentTheme.name == "Kanagawa" then
-						themery.setThemeByName("Zenbones", true)
-					else
-						themery.setThemeByName("Kanagawa", true)
-					end
-				end, { noremap = true, desc = "Change theme" }),
 			})
+      vim.keymap.set("n", "<leader>tt", function()
+        local themery = require("themery")
+        local currentTheme = themery.getCurrentTheme()
+        if currentTheme and currentTheme.name == "Kanagawa" then
+          themery.setThemeByName("Zenbones", true)
+        else
+          themery.setThemeByName("Kanagawa", true)
+        end
+      end, { noremap = true, desc = "Change theme" })
 		end,
 	},
 	{
 		"thesimonho/kanagawa-paper.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		opts = {},
 		config = function()
@@ -96,7 +96,6 @@ return {
 					light = "lotus",
 				},
 			})
-
 			vim.cmd.colorscheme("kanagawa")
 		end,
 	},

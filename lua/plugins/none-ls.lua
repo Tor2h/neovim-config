@@ -5,7 +5,7 @@ return {
 			local null_ls = require("null-ls")
 
 			local work_angular_path = "C:/Projekter/renomatic/Angular/renomatic"
-			local work_config_path = "C:/Users/tho/AppData/Local/nvim"
+			local work_config_path = "C:/Users/th004/AppData/Local/nvim"
 			local personal_angular_path = "C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp"
 			local personal_config_path = "C:/Users/Tor/AppData/Local/nvim"
 
@@ -30,6 +30,7 @@ return {
 			end
 
 			vim.keymap.set({ "n", "v" }, "<leader>j", function()
+        local bufnr = vim.api.nvim_get_current_buf()  -- Get current buffer
 				local clients = vim.lsp.get_clients({ bufnr = bufnr })
 				local formatters = {}
 
