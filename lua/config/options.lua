@@ -43,13 +43,16 @@ global.python3_host_skip_check = 1
 
 o.updatetime = 50
 --vim.diagnostic.config({ signs = false })
+---- Recommended settings for 0.11.6
 vim.diagnostic.config({
-	-- virtual_text = false, -- Disable inline text if it clutters the UI
+	virtual_text = { prefix = "●" },
+	underline = true,
+	signs = false, -- Reduce clutter if using gutter signs elsewhere
 	float = {
 		source = "if_many", -- Show the source of diagnostics only if there are multiple
 	},
 })
 
---global.skip_ts_context_commentstring_module = true
-vim.cmd([[syntax on]])
-vim.cmd([[filetype plugin indent on]])
+o.swapfile = false
+o.backup = false
+o.undofile = false

@@ -15,20 +15,12 @@ return {
 		end,
 	},
 
-	-- {
-	-- 	"jay-babu/mason-nvim-dap.nvim",
-	-- 	lazy = false,
-	-- 	config = function()
-	-- 		require("mason-nvim-dap").setup()
-	-- 	end,
-	-- },
-
 	{
 		"williamboman/mason-lspconfig.nvim",
 		lazy = false,
 		opts = {
 			ensure_installed = {
-				"angularls@17.3.5",
+				"angularls@20.3.0",
 				"ts_ls",
 				"html",
 				"cssls",
@@ -48,12 +40,6 @@ return {
 					client.server_capabilities.documentFormattingRangeProvider = false
 				end,
 			}),
-			-- config = {
-			-- on_attach = function(client)
-			-- 	client.server_capabilities.documentFormattingProvider = false
-			-- 	client.server_capabilities.documentFormattingRangeProvider = false
-			-- end,
-			-- },
 		},
 	},
 
@@ -69,44 +55,11 @@ return {
 				client.server_capabilities.documentFormattingRangeProvider = false
 			end
 
-			local work_angular_path = "C:/Projekter/renomatic/Angular/renomatic"
-			local work_config_path = "C:/Users/tho/AppData/Local/nvim"
-			local personal_angular_path = "C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp"
-			local personal_config_path = "C:/Users/Tor/AppData/Local/nvim"
-
-			local current_dir = vim.fn.getcwd():gsub("\\", "/")
+			local work_config_path = "C:/Users/th004/AppData/Local/nvim"
 			local current_config_dir = vim.fn.stdpath("config"):gsub("\\", "/")
 
-			if current_dir == personal_angular_path then
-				vim.lsp.config("angularls", {
-					on_attach = function(client)
-						on_attach_no_format(client)
-					end,
-					capabilities = capabilities,
-					root_dir = require("lspconfig").util.root_pattern("angular.json", ".git"),
-					cmd = {
-						"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
-						"--stdio",
-						"--tsProbeLocations",
-						"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/typescript/lib",
-						"--ngProbeLocations",
-						"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules",
-					},
-					on_new_config = function(new_config, new_root_dir)
-						new_config.cmd = {
-							"C:/Users/Tor/programming/BlueNoteWeb/webApp/angularapp/node_modules/.bin/ngserver.cmd",
-							"--stdio",
-							"--tsProbeLocations",
-							new_root_dir .. "/node_modules/typescript/lib",
-							"--ngProbeLocations",
-							new_root_dir .. "/node_modules",
-						}
-					end,
-				})
-			end
-
 			if current_config_dir == work_config_path then
-				local project_library_path = "C:/Projekter/renomatic/Angular/renomatic"
+				local project_library_path = "C:/Users/th004/projekter/renomatic/Angular/renomatic"
 				local cmd = {
 					"ngserver",
 					"--stdio",
@@ -210,8 +163,8 @@ return {
 					-- "htmlangular",
 				},
 			})
-			-- end
 
+			-- end
 			vim.keymap.set("n", "K", function()
 				vim.lsp.buf.hover({ border = "rounded" })
 			end, { desc = "Hover" })

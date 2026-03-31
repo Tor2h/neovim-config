@@ -8,6 +8,7 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
 		},
+		lazy = true,
 	},
 
 	{
@@ -36,7 +37,7 @@ return {
 			"hrsh7th/cmp-buffer",
 			"saadparwaiz1/cmp_luasnip",
 		},
-		lazy = false,
+		lazy = true,
 		priority = 200,
 		config = function()
 			local cmp = require("cmp")

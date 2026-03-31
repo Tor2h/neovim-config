@@ -23,32 +23,67 @@ return {
 				desc = "harpoon quick menu",
 			},
 			{
-				"<C-x>",
+				"<A-m>",
 				function()
 					require("harpoon"):list():select(1)
 				end,
 				desc = "harpoon to file 1",
 			},
 			{
-				"<C-c>",
+				"<A-,>",
 				function()
 					require("harpoon"):list():select(2)
 				end,
 				desc = "harpoon to file 2",
 			},
 			{
-				"<C-v>",
+				"<A-.>",
 				function()
 					require("harpoon"):list():select(3)
 				end,
 				desc = "harpoon to file 3",
 			},
 			{
-				"<C-s>",
+				"<A-j>",
 				function()
 					require("harpoon"):list():select(4)
 				end,
 				desc = "harpoon to file 4",
+			},
+			{
+				"<A-k>",
+				function()
+					require("harpoon"):list():select(5)
+				end,
+				desc = "harpoon to file 5",
+			},
+			{
+				"<A-l>",
+				function()
+					require("harpoon"):list():select(6)
+				end,
+				desc = "harpoon to file 6",
+			},
+			{
+				"<A-u>",
+				function()
+					require("harpoon"):list():select(7)
+				end,
+				desc = "harpoon to file 7",
+			},
+			{
+				"<A-i>",
+				function()
+					require("harpoon"):list():select(8)
+				end,
+				desc = "harpoon to file 8",
+			},
+			{
+				"<A-o>",
+				function()
+					require("harpoon"):list():select(9)
+				end,
+				desc = "harpoon to file 9",
 			},
 		},
 	},
