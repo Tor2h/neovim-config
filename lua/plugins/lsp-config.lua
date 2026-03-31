@@ -137,6 +137,12 @@ return {
 
 			vim.lsp.config("rust_analyzer", {
 				capabilities = capabilities,
+				filetypes = { "rust" },
+			})
+
+			vim.lsp.config("taplo", {
+				capabilities = capabilities,
+				filetypes = { "toml" },
 			})
 
 			vim.lsp.config("marksman", {
@@ -172,6 +178,13 @@ return {
 					on_attach_no_format(client)
 				end,
 			})
+
+			-- vim.lsp.config("svelte", {
+			-- 	capabilities = capabilities,
+			-- 	on_attach = function(client)
+			-- 		on_attach_no_format(client)
+			-- 	end,
+			-- })
 
 			vim.lsp.config("rnix", {
 				capabilities = capabilities,
