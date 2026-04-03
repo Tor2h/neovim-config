@@ -1,14 +1,3 @@
-return {
-	"folke/which-key.nvim",
-	event = "VeryLazy",
-	opts = {},
-	keys = {
-		{
-			"<leader>?",
-			function()
-				require("which-key").show({ global = false })
-			end,
-			desc = "Buffer Local Keymaps (which-key)",
-		},
-	},
-}
+vim.pack.add({ 'https://github.com/folke/which-key.nvim' })
+
+vim.api.nvim_set_keymap('n', '<leader>?', '<cmd>WhichKey<CR>', { desc = "WhichKey", noremap = true, silent = true })

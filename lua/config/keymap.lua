@@ -39,35 +39,29 @@ set("n", "<c-w>m", "<c-w>10>")
 set("n", "<leader>te", ":tabedit<CR>", opts)
 set("n", "H", "^", opts)
 set("n", "L", "$", opts)
+
 set("n", "<left>", "gT")
 set("n", "<right>", "gt")
 
 set("n", "<leader>x", function()
-	vim.diagnostic.open_float({ border = "rounded" })
+  vim.diagnostic.open_float({ border = "rounded" })
 end, { desc = "Error diagnostic" })
 
 set("n", "<leader>ge", function()
-	vim.diagnostic.jump({ count = 1, float = { border = "rounded" } })
+  vim.diagnostic.jump({ count = 1, float = { border = "rounded" } })
 end, { desc = "Next Error" })
 
 set("n", "<leader>gE", function()
-	vim.diagnostic.jump({ count = -1, float = { border = "rounded" } })
+  vim.diagnostic.jump({ count = -1, float = { border = "rounded" } })
 end, { desc = "Previous Error" })
 
-set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
-set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-
-set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
-set("n", "<c-n>", "<Plug>(YankyNextEntry)")
 
 set("n", "<CR>", function()
-	---@diagnostic disable-next-line: undefined-field
-	if vim.v.hlsearch == 1 then
-		vim.cmd.nohl()
-		return ""
-	else
-		return k("<CR>")
-	end
+  ---@diagnostic disable-next-line: undefined-field
+  if vim.v.hlsearch == 1 then
+    vim.cmd.nohl()
+    return ""
+  else
+    return k("<CR>")
+  end
 end, { expr = true })

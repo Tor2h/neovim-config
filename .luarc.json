@@ -1,6 +1,13 @@
 {
-    "diagnostics.globals": [
-        "vim",
-        "colors"
-    ]
+  "runtime.version": "LuaJIT",
+  "runtime.path": [
+    "lua/?.lua",
+    "lua/?/init.lua"
+  ],
+  "diagnostics.globals": ["vim",
+        "local"],
+  "workspace.checkThirdParty": false,
+  "workspace.library": [
+    "$VIMRUNTIME"
+  ]
 }
