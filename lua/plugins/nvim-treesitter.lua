@@ -16,7 +16,7 @@ require('nvim-treesitter.configs').setup({
     'typst'
   },
   auto_install = true,
-  highligt = {
+  highlight = {
     enable = true,
     additional_vim_regex_highlightning = false,
   },
