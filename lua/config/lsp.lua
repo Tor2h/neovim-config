@@ -1,8 +1,16 @@
+vim.lsp.enable('angularls')
+vim.lsp.enable('cssls')
+vim.lsp.enable('jsonls')
 vim.lsp.enable('lua_ls')
+vim.lsp.enable('marksman')
 vim.lsp.enable('rnix')
+vim.lsp.enable('roslyn')
 vim.lsp.enable('rust_analyzer')
+vim.lsp.enable('html')
 vim.lsp.enable('svelte')
--- vim.lsp.enable('eslint')
+vim.lsp.enable('taplo')
+vim.lsp.enable('tinymist')
+vim.lsp.enable('ts_ls')
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
