@@ -54,6 +54,58 @@ return {
 				client.server_capabilities.documentFormattingProvider = false
 				client.server_capabilities.documentFormattingRangeProvider = false
 			end
+			local hover_as_text = function()
+				local params = vim.lsp.util.make_position_params(0, "utf-8")
+
+				vim.lsp.buf_request_all(0, "textDocument/hover", params, function(results)
+					local lines
+					for _, response in pairs(results) do
+						local result = response.result
+						if result and result.contents then
+							lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+              lines = vim.tbl_filter(function(line) return line ~= "" end, lines)
+							if lines and not vim.tbl_isempty(lines) then
+								break
+							end
+						end
+					end
+
+					if not lines or vim.tbl_isempty(lines) then
+						return
+					end
+
+					vim.lsp.util.open_floating_preview(lines, "text", {
+						border = "rounded",
+						focus_id = "lsp_hover",
+					})
+				end)
+			end
+			local signature_help_as_text = function()
+				local params = vim.lsp.util.make_position_params(0, "utf-8")
+
+				vim.lsp.buf_request_all(0, "textDocument/signatureHelp", params, function(results)
+					local lines
+					for _, response in pairs(results) do
+						local result = response.result
+						if result and result.signatures and not vim.tbl_isempty(result.signatures) then
+							lines = vim.lsp.util.convert_signature_help_to_markdown_lines(result, 0)
+              lines = vim.tbl_filter(function(line) return line ~= "" end, lines)
+							if lines and not vim.tbl_isempty(lines) then
+								break
+							end
+						end
+					end
+
+					if not lines or vim.tbl_isempty(lines) then
+						return
+					end
+
+					vim.lsp.util.open_floating_preview(lines, "text", {
+						border = "rounded",
+						focus_id = "lsp_signature_help",
+					})
+				end)
+			end
 
 			local work_config_path = "C:/Users/th004/AppData/Local/nvim"
 			local current_config_dir = vim.fn.stdpath("config"):gsub("\\", "/")
@@ -165,16 +217,15 @@ return {
 			})
 
 			-- end
-			vim.keymap.set("n", "K", function()
-				vim.lsp.buf.hover({ border = "rounded" })
-			end, { desc = "Hover" })
+			vim.keymap.set("n", "K", hover_as_text, { desc = "Hover" })
 			-- vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Definition" })
 			-- vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "References" })
 			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename" })
 			-- vim.keymap.set("n", "<leader>gD", vim.lsp.buf.declaration, { desc = "Declaration" })
 			-- vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { desc = "Implementation" })
-			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Signature help" })
+			vim.keymap.set("n", "<C-k>", signature_help_as_text, { desc = "Signature help" })
+			vim.keymap.set("i", "<C-s>", signature_help_as_text, { desc = "Signature help" })
 			vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, { desc = "Definition" })
 		end,
 	},

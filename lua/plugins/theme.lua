@@ -1,56 +1,4 @@
 return {
-	-- the colorscheme should be available when starting Neovim
-	-- {
-	-- 	"zaldih/themery.nvim",
-	-- 	lazy = false,
-	-- 	config = function()
-	-- 		require("themery").setup({
-	-- 			-- add the config here
-	-- 			themes = {
-	-- 				{
-	-- 					name = "Kanagawa",
-	-- 					colorscheme = "kanagawa",
-	-- 				},
-	-- 				{
-	-- 					name = "Zenbones",
-	-- 					colorscheme = "rose-pine",
-	-- 				},
-	-- 			},
-	-- 			vim.keymap.set("n", "<leader>tt", function()
-	-- 				local themery = require("themery")
-	-- 				local currentTheme = themery.getCurrentTheme()
-	-- 				if currentTheme and currentTheme.name == "Kanagawa" then
-	-- 					themery.setThemeByName("Zenbones", true)
-	-- 				else
-	-- 					themery.setThemeByName("Kanagawa", true)
-	-- 				end
-	-- 			end, { noremap = true, desc = "Change theme" }),
-	-- 		})
-	-- 	end,
-	-- },
-	-- {
-	-- 	"thesimonho/kanagawa-paper.nvim",
-	-- 	lazy = false,
-	-- 	priority = 1000,
-	-- 	opts = {},
-	-- 	config = function()
-	-- 		require("kanagawa-paper").setup({
-	-- 			transparent = true,
-	-- 			colors = {
-	-- 				palette = {
-	-- 					sumiInkn1 = "#0f0f15",
-	-- 					sumiInk0 = "#000000",
-	-- 					sumiInk1 = "#181820",
-	-- 					sumiInk2 = "#1a1a22",
-	-- 					sumiInk3 = "#1F1F28",
-	-- 					sumiInk4 = "#000000",
-	-- 					sumiInk5 = "#363646",
-	-- 					sumiInk6 = "#54546D",
-	-- 				},
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"rebelot/kanagawa.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -117,41 +65,6 @@ return {
 			})
 		end,
 	},
-	-- {
-	-- 	"folke/tokyonight.nvim",
-	-- 	config = function()
-	-- 		require("tokyonight").setup({
-	-- 			on_colors = function(colors)
-	-- 				-- colors.bg = "#000000"
-	-- 			end,
-	-- 		})
-	-- 	end,
-	-- },
-	-- {
-	-- 	"catppuccin/nvim",
-	-- 	config = function()
-	-- 		require("catppuccin").setup({
-	-- 			color_overrides = {
-	-- 				all = {
-	-- 					-- base = "#000000",
-	-- 				},
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
-	-- Lazy
-	-- {
-	-- 	"vague2k/vague.nvim",
-	-- 	config = function()
-	-- 		-- NOTE: you do not need to call setup if you don't want to.
-	-- 		require("vague").setup({
-	-- 			-- optional configuration here
-	-- 			colors = {
-	-- 				-- bg = "#000000",
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- },
 	{
 		"zenbones-theme/zenbones.nvim",
 		-- Optionally install Lush. Allows for more configuration or extending the colorscheme

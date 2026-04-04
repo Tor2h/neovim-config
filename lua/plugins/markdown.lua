@@ -5,5 +5,19 @@ return {
 	dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
 	---@module 'render-markdown'
 	---@type render.md.UserConfig
-	opts = {},
+	opts = {
+		ignore = function(buffer)
+			if vim.bo[buffer].buftype ~= "nofile" then
+				return false
+			end
+
+			for _, win in ipairs(vim.fn.win_findbuf(buffer)) do
+				if vim.api.nvim_win_get_config(win).relative ~= "" then
+					return true
+				end
+			end
+
+			return false
+		end,
+	},
 }

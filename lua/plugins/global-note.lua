@@ -33,7 +33,7 @@ return {
 
 			return project_name
 		end
-		local global_dir = "/home/tor/Notes/"
+		local global_dir = "C:\\Users\\th004\\Notes\\"
 		return {
 			autosave = false,
 			directory = global_dir,
