@@ -320,6 +320,7 @@ return {
   },
 
   on_attach = function(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
     -- avoid duplicate autocmds for same buffer
     if vim.api.nvim_get_autocmds({ buffer = bufnr, group = group })[1] then
       return

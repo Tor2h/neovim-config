@@ -30,7 +30,6 @@ local current_config_dir = vim.fn.stdpath("config"):gsub("\\", "/")
 if current_config_dir == work_config_path then
   null_ls.setup({
     sources = {
-      null_ls.builtins.formatting.stylua,
       eslint_diagnostics,
       null_ls.builtins.formatting.prettier,
     },

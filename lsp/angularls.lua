@@ -119,5 +119,5 @@ return {
   end,
 
   filetypes = { 'typescript', 'html', 'typescriptreact', 'htmlangular' },
-  root_markers = { 'angular.json', 'nx.json' },
+  root_markers = { 'nx.json', 'package.json' },
 }

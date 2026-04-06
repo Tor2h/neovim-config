@@ -90,6 +90,10 @@
       "rev": "c7188a8f9d2953696b6303caccbf39c51fa2c1b1",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
+    "roslyn.nvim": {
+      "rev": "ff43201090361b8936e008a006473b59ef2c0ca6",
+      "src": "https://github.com/seblyng/roslyn.nvim"
+    },
     "snacks.nvim": {
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
       "src": "https://github.com/folke/snacks.nvim"
