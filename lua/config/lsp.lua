@@ -11,10 +11,21 @@ vim.lsp.enable('taplo')
 vim.lsp.enable('tinymist')
 vim.lsp.enable('ts_ls')
 
+local function is_csharp_buffer(bufnr)
+  return vim.bo[bufnr].filetype == 'cs'
+end
+
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    local is_csharp = is_csharp_buffer(args.buf)
+
+    if is_csharp then
+      client.server_capabilities.documentFormattingProvider = false
+      client.server_capabilities.documentRangeFormattingProvider = false
+    end
+
     if client:supports_method('textDocument/implementation') then
       vim.keymap.set('n', 'gi', function()
         vim.lsp.buf.implementation()
@@ -22,7 +33,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
     -- Auto-format ("lint") on save.
     -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
-    if not client:supports_method('textDocument/willSaveWaitUntil')
+    if not is_csharp
+        and not client:supports_method('textDocument/willSaveWaitUntil')
         and client:supports_method('textDocument/formatting') then
       vim.api.nvim_create_autocmd('BufWritePre', {
         group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),

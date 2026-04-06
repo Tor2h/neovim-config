@@ -38,6 +38,12 @@ end
 
 vim.keymap.set({ "n", "v" }, "<leader>j", function()
   local bufnr = vim.api.nvim_get_current_buf() -- Get current buffer
+
+  if vim.bo[bufnr].filetype == "cs" then
+    vim.notify("Formatting is disabled for C# buffers", vim.log.levels.INFO)
+    return
+  end
+
   local clients = vim.lsp.get_clients({ bufnr = bufnr })
   local formatters = {}
 
