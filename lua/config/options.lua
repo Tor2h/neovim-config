@@ -48,7 +48,7 @@ o.updatetime = 50
 vim.diagnostic.config({
   virtual_text = { prefix = "●" },
   underline = true,
-  signs = false,      -- Reduce clutter if using gutter signs elsewhere
+  signs = false,        -- Reduce clutter if using gutter signs elsewhere
   float = {
     source = "if_many", -- Show the source of diagnostics only if there are multiple
   },
