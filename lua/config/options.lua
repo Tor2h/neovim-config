@@ -1,8 +1,6 @@
 local global = vim.g
 local o = vim.opt
 
-global.snacks_animate = false
-
 o.number = true
 o.relativenumber = true
 o.numberwidth = 4
@@ -43,15 +41,15 @@ global.python3_host_skip_check = 1
 
 o.winborder = "rounded"
 o.updatetime = 50
-o.sessionoptions = "blank,curdir,help,tabpages,winsize,winpos,terminal"
+o.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,winpos,terminal,localoptions"
 --vim.diagnostic.config({ signs = false })
 ---- Recommended settings for 0.11.6
 vim.diagnostic.config({
   virtual_text = { prefix = "●" },
   underline = true,
-  signs = false,        -- Reduce clutter if using gutter signs elsewhere
+  signs = false,   -- Reduce clutter if using gutter signs elsewhere
   float = {
-    source = "if_many", -- Show the source of diagnostics only if there are multiple
+    source = true, -- Show the source of diagnostics only if there are multiple
   },
 })
 
