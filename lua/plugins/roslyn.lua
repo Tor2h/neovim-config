@@ -46,6 +46,15 @@ local roslyn_cmd = get_roslyn_cmd()
 if roslyn_cmd then
   vim.lsp.config('roslyn', {
     cmd = roslyn_cmd,
+    handlers = {
+      ['textDocument/publishDiagnostics'] = function() end,
+      ['textDocument/diagnostic'] = function(err, result, ctx)
+        if ctx and ctx.params then
+          ctx.params.identifier = 'roslyn'
+        end
+        vim.lsp.diagnostic.on_diagnostic(err, result, ctx)
+      end,
+    },
   })
 end
 

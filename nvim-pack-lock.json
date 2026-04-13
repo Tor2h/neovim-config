@@ -9,7 +9,7 @@
       "src": "https://github.com/rmagatti/auto-session"
     },
     "blink.cmp": {
-      "rev": "a327b19a419347084074cce77f6cd074f54705ac",
+      "rev": "456d38d1cd3743926f329204c2340f3e7840aad6",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "friendly-snippets": {
@@ -17,7 +17,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns.nvim": {
-      "rev": "0d797daee85366bc242580e352a4f62d67557b84",
+      "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "global-note.nvim": {
@@ -34,7 +34,7 @@
       "src": "https://github.com/rebelot/kanagawa.nvim"
     },
     "lualine.nvim": {
-      "rev": "8811f3f3f4dc09d740c67e9ce399e7a541e2e5b2",
+      "rev": "f5d2a8570f8b736ddb9bb4be504355bcd6e15ec8",
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mini.icons": {
@@ -79,11 +79,11 @@
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "nvim-web-devicons": {
-      "rev": "95b7a002d5dba1a42eb58f5fac5c565a485eefd0",
+      "rev": "c72328a5494b4502947a022fe69c0c47e53b6aa6",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "plenary.nvim": {
-      "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
+      "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "render-markdown.nvim": {
@@ -123,7 +123,7 @@
       "src": "https://github.com/gbprod/yanky.nvim"
     },
     "yazi.nvim": {
-      "rev": "78f7dc1ff5fef3ea60897ec356681f9aa0ed53d8",
+      "rev": "c12505adceaf0f22f9b0749bdbdf7a2c566784fb",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }

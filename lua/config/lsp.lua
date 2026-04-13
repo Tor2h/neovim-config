@@ -31,6 +31,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local is_sql = is_sql_buffer(args.buf)
     local is_json = is_json_buffer(args.buf)
 
+    if client.name == 'roslyn' then
+      -- roslyn.nvim triggers explicit textDocument/diagnostic refreshes.
+      -- Disable Neovim's automatic pull loop to avoid duplicate diagnostics.
+      client.server_capabilities.diagnosticProvider = nil
+    end
+
     if is_csharp then
       client.server_capabilities.documentFormattingProvider = false
       client.server_capabilities.documentRangeFormattingProvider = false
@@ -60,7 +66,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 
 vim.diagnostic.config({
-  virtual_lines = {
-    current_line = true,
-  },
+  -- virtual_lines = {
+  --   current_line = true,
+  -- },
 })

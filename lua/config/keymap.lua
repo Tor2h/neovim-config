@@ -43,6 +43,8 @@ set("n", "L", "$", opts)
 set("n", "<left>", "gT")
 set("n", "<right>", "gt")
 
+set("n", "<leader>uw", ":set wrap!<CR>", opts)
+
 set("n", "<leader>x", function()
   vim.diagnostic.open_float({ border = "rounded" })
 end, { desc = "Error diagnostic" })

@@ -1,16 +1,40 @@
 vim.pack.add({ 'https://github.com/rafamadriz/friendly-snippets' })
 vim.pack.add({ 'https://github.com/L3MON4D3/LuaSnip' })
-vim.pack.add({ 'https://github.com/nvim-svelte/nvim-svelte-snippets' })
 vim.pack.add({ 'https://github.com/Saghen/blink.cmp' })
 
 local luasnip = require("luasnip")
 luasnip.filetype_extend("htmlangular", { "html" })
 require("luasnip.loaders.from_vscode").lazy_load()
-require("nvim-svelte-snippets").setup({
-  enabled = true,
-  auto_detect = true,
-  prefix = "kit",
+
+local svelte_snippets_loaded = false
+local function load_svelte_snippets()
+  if svelte_snippets_loaded then
+    return
+  end
+  svelte_snippets_loaded = true
+
+  vim.pack.add({ 'https://github.com/nvim-svelte/nvim-svelte-snippets' })
+  require("nvim-svelte-snippets").setup({
+    enabled = true,
+    auto_detect = true,
+    prefix = "kit",
+  })
+end
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "svelte",
+  callback = load_svelte_snippets,
 })
+
+local function to_string_or_nil(value)
+  if value == nil or value == vim.NIL then
+    return nil
+  end
+  if type(value) == "string" then
+    return value
+  end
+  return tostring(value)
+end
 
 require("blink.cmp").setup({
   keymap = {
@@ -49,6 +73,23 @@ require("blink.cmp").setup({
   },
   sources = {
     default = { 'lsp', 'path', 'snippets', 'buffer' },
+    transform_items = function(_, items)
+      for _, item in ipairs(items) do
+        item.label = to_string_or_nil(item.label) or ""
+        item.filterText = to_string_or_nil(item.filterText)
+        item.insertText = to_string_or_nil(item.insertText)
+        item.sortText = to_string_or_nil(item.sortText)
+
+        if type(item.labelDetails) == "table" then
+          item.labelDetails.description = to_string_or_nil(item.labelDetails.description)
+        end
+
+        if type(item.documentation) ~= "table" then
+          item.documentation = to_string_or_nil(item.documentation)
+        end
+      end
+      return items
+    end,
   },
   cmdline = {
     -- default = { 'lsp', 'path', 'snippets', 'buffer' },
