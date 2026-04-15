@@ -1,13 +1,10 @@
-local loaded = false
+local ensure_undotree_loaded
 
-local function ensure_undotree_loaded()
-  if loaded then
-    return
-  end
-
-  loaded = true
+ensure_undotree_loaded = function()
   vim.pack.add({ 'https://github.com/jiaoshijie/undotree' })
   require("undotree").setup()
+
+  ensure_undotree_loaded = function() end
 end
 
 vim.keymap.set('n', '<leader>ut', function()

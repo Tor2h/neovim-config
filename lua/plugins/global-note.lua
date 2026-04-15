@@ -1,11 +1,6 @@
-local loaded = false
+local ensure_global_note_loaded
 
-local function ensure_global_note_loaded()
-  if loaded then
-    return
-  end
-
-  loaded = true
+ensure_global_note_loaded = function()
   vim.pack.add({ 'https://github.com/backdround/global-note.nvim' })
 
   -- Helper function for getting the project name
@@ -64,6 +59,8 @@ local function ensure_global_note_loaded()
       },
     },
   })
+
+  ensure_global_note_loaded = function() end
 end
 
 vim.keymap.set('n', '<leader>m', function()

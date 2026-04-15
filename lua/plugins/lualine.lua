@@ -1,11 +1,6 @@
-local loaded = false
+local setup_lualine
 
-local function setup_lualine()
-  if loaded then
-    return
-  end
-
-  loaded = true
+setup_lualine = function()
   vim.pack.add({ 'https://github.com/nvim-tree/nvim-web-devicons' })
   vim.pack.add({ 'https://github.com/nvim-lualine/lualine.nvim' })
 
@@ -105,12 +100,8 @@ local function setup_lualine()
     },
     extensions = { "nvim-tree" },
   })
+
+  setup_lualine = function() end
 end
 
-vim.api.nvim_create_autocmd("VimEnter", {
-  group = vim.api.nvim_create_augroup("plugins.lualine.defer", { clear = true }),
-  once = true,
-  callback = function()
-    vim.schedule(setup_lualine)
-  end,
-})
+require("lazyload").on_vim_enter(setup_lualine, { sync = true })

@@ -1,11 +1,6 @@
-local loaded = false
+local ensure_harpoon_loaded
 
-local function ensure_harpoon_loaded()
-  if loaded then
-    return
-  end
-
-  loaded = true
+ensure_harpoon_loaded = function()
   vim.pack.add({ 'https://github.com/nvim-lua/plenary.nvim' })
   vim.pack.add({
     {
@@ -13,6 +8,8 @@ local function ensure_harpoon_loaded()
       version = "harpoon2",
     },
   })
+
+  ensure_harpoon_loaded = function() end
 end
 
 local function harpoon()

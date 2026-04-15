@@ -1,25 +1,33 @@
+require('plugins.auto-session')
 require('config.autocmd')
 require('config.globals')
 require('config.keymap')
 require('config.lsp')
+local lazyload = require('lazyload')
+
 require('plugins.kanagawa')
-require('plugins.auto-session')
 require('config.options')
-require('plugins.mini')
-require('plugins.which-key')
-require('plugins.telescope')
-require('plugins.nvim-treesitter')
-require('plugins.roslyn')
-require('plugins.auto-tag')
-require('plugins.db')
-require('plugins.gitsigns')
-require('plugins.global-note')
-require('plugins.harpoon')
-require('plugins.highlight-colors')
-require('plugins.lualine')
-require('plugins.render-markdown')
-require('plugins.none-ls')
-require('plugins.completion')
-require('plugins.undotree')
-require('plugins.yanky')
-require('plugins.oil')
+
+lazyload.require_modules_on_vim_enter({
+  'plugins.lualine',
+  'plugins.mini',
+  'plugins.yanky',
+}, { sync = true })
+
+lazyload.require_modules_on_vim_enter({
+  'plugins.which-key',
+  'plugins.telescope',
+  'plugins.nvim-treesitter',
+  'plugins.roslyn',
+  'plugins.auto-tag',
+  'plugins.db',
+  'plugins.gitsigns',
+  'plugins.global-note',
+  'plugins.harpoon',
+  'plugins.highlight-colors',
+  'plugins.render-markdown',
+  'plugins.none-ls',
+  'plugins.completion',
+  'plugins.undotree',
+  'plugins.oil',
+})
