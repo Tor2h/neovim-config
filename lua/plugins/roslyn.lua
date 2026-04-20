@@ -1,83 +1,66 @@
-local ensure_roslyn_loaded
+vim.pack.add({ 'https://github.com/seblyng/roslyn.nvim' })
 
-ensure_roslyn_loaded = function()
-  vim.pack.add({ 'https://github.com/seblyng/roslyn.nvim' })
+local function get_roslyn_cmd()
+  local data_dir = vim.fn.stdpath('data')
+  local exe_matches = vim.fn.glob(vim.fs.joinpath(
+    data_dir,
+    'Microsoft.CodeAnalysis.LanguageServer.win-x64.*',
+    'content',
+    'LanguageServer',
+    'win-x64',
+    'Microsoft.CodeAnalysis.LanguageServer.exe'
+  ), false, true)
 
-  local function get_roslyn_cmd()
-    local data_dir = vim.fn.stdpath('data')
-    local exe_matches = vim.fn.glob(vim.fs.joinpath(
-      data_dir,
-      'Microsoft.CodeAnalysis.LanguageServer.win-x64.*',
-      'content',
-      'LanguageServer',
-      'win-x64',
-      'Microsoft.CodeAnalysis.LanguageServer.exe'
-    ), false, true)
-
-    if #exe_matches > 0 then
-      table.sort(exe_matches)
-      return {
-        exe_matches[#exe_matches],
-        '--logLevel=Information',
-        '--extensionLogDirectory=' .. data_dir,
-        '--stdio',
-      }
-    end
-
-    local dll_matches = vim.fn.glob(vim.fs.joinpath(
-      data_dir,
-      'Microsoft.CodeAnalysis.LanguageServer.win-x64.*',
-      'content',
-      'LanguageServer',
-      'win-x64',
-      'Microsoft.CodeAnalysis.LanguageServer.dll'
-    ), false, true)
-
-    if #dll_matches > 0 and vim.fn.executable('dotnet') == 1 then
-      table.sort(dll_matches)
-      return {
-        'dotnet',
-        dll_matches[#dll_matches],
-        '--logLevel=Information',
-        '--extensionLogDirectory=' .. data_dir,
-        '--stdio',
-      }
-    end
+  if #exe_matches > 0 then
+    table.sort(exe_matches)
+    return {
+      exe_matches[#exe_matches],
+      '--logLevel=Information',
+      '--extensionLogDirectory=' .. data_dir,
+      '--stdio',
+    }
   end
 
-  local roslyn_cmd = get_roslyn_cmd()
-  if roslyn_cmd then
-    vim.lsp.config('roslyn', {
-      cmd = roslyn_cmd,
-      handlers = {
-        ['textDocument/publishDiagnostics'] = function() end,
-        ['textDocument/diagnostic'] = function(err, result, ctx)
-          if ctx and ctx.params then
-            ctx.params.identifier = 'roslyn'
-          end
-          vim.lsp.diagnostic.on_diagnostic(err, result, ctx)
-        end,
-      },
-    })
-  end
+  local dll_matches = vim.fn.glob(vim.fs.joinpath(
+    data_dir,
+    'Microsoft.CodeAnalysis.LanguageServer.win-x64.*',
+    'content',
+    'LanguageServer',
+    'win-x64',
+    'Microsoft.CodeAnalysis.LanguageServer.dll'
+  ), false, true)
 
-  require('roslyn').setup({
-    on_attach = function(client)
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
-    end,
+  if #dll_matches > 0 and vim.fn.executable('dotnet') == 1 then
+    table.sort(dll_matches)
+    return {
+      'dotnet',
+      dll_matches[#dll_matches],
+      '--logLevel=Information',
+      '--extensionLogDirectory=' .. data_dir,
+      '--stdio',
+    }
+  end
+end
+
+local roslyn_cmd = get_roslyn_cmd()
+if roslyn_cmd then
+  vim.lsp.config('roslyn', {
+    cmd = roslyn_cmd,
+    -- handlers = {
+    --   ['textDocument/publishDiagnostics'] = function() end,
+    --   ['textDocument/diagnostic'] = function(err, result, ctx)
+    --     if ctx and ctx.params then
+    --       ctx.params.identifier = 'roslyn'
+    --     end
+    --     vim.lsp.diagnostic.on_diagnostic(err, result, ctx)
+    --   end,
+    -- },
   })
-
-  ensure_roslyn_loaded = function() end
 end
 
-vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup('plugins.roslyn.lazy', { clear = true }),
-  pattern = { 'cs' },
-  once = true,
-  callback = ensure_roslyn_loaded,
+require('roslyn').setup({
+  -- on_attach = function(client)
+  -- client.server_capabilities.documentFormattingProvider = false
+  -- client.server_capabilities.documentRangeFormattingProvider = false
+  -- end,
 })
-
-if vim.bo.filetype == 'cs' then
-  ensure_roslyn_loaded()
-end

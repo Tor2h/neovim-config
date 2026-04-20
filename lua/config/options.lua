@@ -41,7 +41,7 @@ global.python3_host_skip_check = 1
 
 o.winborder = "rounded"
 o.updatetime = 50
-o.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,winpos,terminal,localoptions"
+o.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,winpos,terminal"
 --vim.diagnostic.config({ signs = false })
 ---- Recommended settings for 0.11.6
 vim.diagnostic.config({

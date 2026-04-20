@@ -3,9 +3,12 @@ require('config.autocmd')
 require('config.globals')
 require('config.keymap')
 require('config.lsp')
+require('plugins.which-key')
+require('plugins.roslyn')
 local lazyload = require('lazyload')
 
 require('plugins.kanagawa')
+require('plugins.themes')
 require('config.options')
 
 lazyload.require_modules_on_vim_enter({
@@ -15,10 +18,8 @@ lazyload.require_modules_on_vim_enter({
 }, { sync = true })
 
 lazyload.require_modules_on_vim_enter({
-  'plugins.which-key',
   'plugins.telescope',
   'plugins.nvim-treesitter',
-  'plugins.roslyn',
   'plugins.auto-tag',
   'plugins.db',
   'plugins.gitsigns',

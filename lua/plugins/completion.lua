@@ -8,6 +8,16 @@ local function to_string_or_nil(value)
   return tostring(value)
 end
 
+local function set_completion_highlights()
+  vim.api.nvim_set_hl(0, "BlinkCmpMenu", { link = "Normal" })
+  vim.api.nvim_set_hl(0, "BlinkCmpMenuBorder", { link = "Normal" })
+  vim.api.nvim_set_hl(0, "BlinkCmpMenuSelection", { link = "PmenuSel" })
+  vim.api.nvim_set_hl(0, "BlinkCmpDoc", { link = "Normal" })
+  vim.api.nvim_set_hl(0, "BlinkCmpDocBorder", { link = "Normal" })
+  vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelp", { link = "Normal" })
+  vim.api.nvim_set_hl(0, "BlinkCmpSignatureHelpBorder", { link = "Normal" })
+end
+
 local ensure_completion_loaded
 local load_svelte_snippets
 
@@ -118,6 +128,13 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "svelte",
   callback = load_svelte_snippets,
 })
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("plugins.completion.highlights", { clear = true }),
+  callback = set_completion_highlights,
+})
+
+set_completion_highlights()
 
 vim.api.nvim_create_autocmd({ "InsertEnter", "CmdlineEnter" }, {
   group = vim.api.nvim_create_augroup("plugins.completion.lazy", { clear = true }),

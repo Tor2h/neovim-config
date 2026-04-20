@@ -3,12 +3,16 @@ local function enable_treesitter(bufnr)
     return
   end
 
-  if vim.bo[bufnr].buftype ~= "" or vim.bo[bufnr].filetype == "" then
+  local filetype = vim.bo[bufnr].filetype
+  if vim.bo[bufnr].buftype ~= "" or filetype == "" then
     return
   end
 
   pcall(vim.treesitter.start, bufnr)
-  vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+
+  if filetype ~= 'cs' then
+    vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+  end
 end
 
 require("lazyload").on_vim_enter(function()
@@ -20,6 +24,7 @@ require("lazyload").on_vim_enter(function()
   })
 
   vim.g.treesitter_install_dir = vim.fn.stdpath('data') .. '/treesitter'
+  require('nvim-treesitter.install').compilers = { 'zig' }
 
   require('nvim-treesitter').setup({})
 
@@ -42,6 +47,7 @@ require("lazyload").on_vim_enter(function()
     'typescript',
     'tsx',
     'css',
+    'scss',
     'rust',
     'typst',
   }

@@ -24,6 +24,9 @@ ensure_telescope_loaded = function()
       find_files = {
         hidden = true,
       },
+      colorscheme = {
+        enable_preview = true,
+      },
     },
     extensions = {
       fzf = {
