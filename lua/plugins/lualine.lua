@@ -85,6 +85,7 @@ setup_lualine = function()
     options = {
       icons_enabled = true,
       theme = kanagawa,
+      globalstatus = true,
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
       disabled_filetypes = { "alpha" },

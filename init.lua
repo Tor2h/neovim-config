@@ -5,11 +5,15 @@ require('config.keymap')
 require('config.lsp')
 require('plugins.which-key')
 require('plugins.roslyn')
-local lazyload = require('lazyload')
-
 require('plugins.kanagawa')
-require('plugins.themes')
+require('plugins.telescope')
+require('plugins.nvim-treesitter')
+require('plugins.oil')
+-- require('plugins.themes')
 require('config.options')
+require('config.tabline')
+
+local lazyload = require('lazyload')
 
 lazyload.require_modules_on_vim_enter({
   'plugins.lualine',
@@ -18,8 +22,6 @@ lazyload.require_modules_on_vim_enter({
 }, { sync = true })
 
 lazyload.require_modules_on_vim_enter({
-  'plugins.telescope',
-  'plugins.nvim-treesitter',
   'plugins.auto-tag',
   'plugins.db',
   'plugins.gitsigns',
@@ -30,5 +32,4 @@ lazyload.require_modules_on_vim_enter({
   'plugins.none-ls',
   'plugins.completion',
   'plugins.undotree',
-  'plugins.oil',
 })

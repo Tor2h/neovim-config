@@ -24,7 +24,12 @@ local load_svelte_snippets
 ensure_completion_loaded = function()
   vim.pack.add({ 'https://github.com/rafamadriz/friendly-snippets' })
   vim.pack.add({ 'https://github.com/L3MON4D3/LuaSnip' })
-  vim.pack.add({ 'https://github.com/Saghen/blink.cmp' })
+  vim.pack.add({
+    {
+      src = 'https://github.com/Saghen/blink.cmp',
+      version = 'v1',
+    },
+  })
 
   local luasnip = require("luasnip")
   luasnip.filetype_extend("htmlangular", { "html" })
