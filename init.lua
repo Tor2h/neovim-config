@@ -11,7 +11,6 @@ require('plugins.nvim-treesitter')
 require('plugins.oil')
 -- require('plugins.themes')
 require('config.options')
-require('config.tabline')
 
 local lazyload = require('lazyload')
 
