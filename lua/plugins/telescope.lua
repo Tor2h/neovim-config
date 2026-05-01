@@ -16,7 +16,8 @@ ensure_telescope_loaded = function()
   local telescope = require("telescope")
   telescope.setup({
     defaults = {
-      path_display = { "filename_first", shorten = 5 },
+      path_display = { "smart", shorten = 5 },
+      wrap_results = true,
       layout_strategy = 'horizontal',
       layout_config = { width = 0.95, height = 0.95 },
     },
