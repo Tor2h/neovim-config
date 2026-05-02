@@ -22,8 +22,8 @@ require('kanagawa').setup({
       },
       lotus = {
         ui = {
-          bg = "none",
-          bg_gutter = "none",
+          -- bg = "none",
+          -- bg_gutter = "none",
         },
       },
     },

@@ -71,7 +71,7 @@
       "src": "https://github.com/nvimtools/none-ls.nvim"
     },
     "nvim": {
-      "rev": "9d22ec7b126d75274a4525840501bf8da55c75f1",
+      "rev": "4dbd9cad1f587b147150e7cf71ac517ac31e3858",
       "src": "https://github.com/ember-theme/nvim"
     },
     "nvim-highlight-colors": {
@@ -108,7 +108,7 @@
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
     "render-markdown.nvim": {
-      "rev": "d67113f11384c0dad96fced2f7b91f1fc811e97f",
+      "rev": "3f3eea97b80839f629c951ca660ffd125bfa5b34",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "roslyn.nvim": {
@@ -128,7 +128,7 @@
       "src": "https://github.com/nvim-telescope/telescope.nvim"
     },
     "undotree": {
-      "rev": "0e6d41d55ad147407e4ba00a292973de8db0b836",
+      "rev": "2c0a3c9488a8230213297cd573922ba6238f0c39",
       "src": "https://github.com/jiaoshijie/undotree"
     },
     "vague.nvim": {
