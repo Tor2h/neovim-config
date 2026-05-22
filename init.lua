@@ -9,7 +9,7 @@ require('plugins.kanagawa')
 require('plugins.telescope')
 require('plugins.nvim-treesitter')
 require('plugins.oil')
--- require('plugins.themes')
+require('plugins.themes')
 require('config.options')
 
 local lazyload = require('lazyload')

@@ -1,5 +1,6 @@
 local global = vim.g
 local o = vim.opt
+local is_windows_terminal = vim.env.WT_SESSION ~= nil and vim.env.WT_SESSION ~= ""
 
 o.number = true
 o.relativenumber = true
@@ -24,7 +25,7 @@ o.termguicolors = true
 o.laststatus = 3
 o.ruler = false
 o.history = 100
-o.smoothscroll = true
+o.smoothscroll = not is_windows_terminal
 o.ttyfast = true
 
 o.scrolloff = 10
@@ -47,7 +48,8 @@ o.sessionoptions = "blank,buffers,curdir,help,tabpages,winsize,winpos,terminal"
 vim.diagnostic.config({
   virtual_text = { prefix = "●" },
   underline = true,
-  signs = false,   -- Reduce clutter if using gutter signs elsewhere
+  signs = false, -- Reduce clutter if using gutter signs elsewhere
+  update_in_insert = false,
   float = {
     source = true, -- Show the source of diagnostics only if there are multiple
   },

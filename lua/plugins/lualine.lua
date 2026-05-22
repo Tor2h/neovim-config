@@ -40,39 +40,41 @@ setup_lualine = function()
   end
 
   local theme = require("kanagawa.colors").setup().theme
+  local normal_hl = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
+  local statusline_bg = normal_hl.bg and string.format("#%06x", normal_hl.bg) or "none"
 
   local kanagawa = {}
 
   kanagawa.normal = {
-    a = { bg = "#000000", fg = theme.syn.fun },
-    b = { bg = "#000000", fg = theme.ui.bg },
-    c = { bg = "#000000", fg = theme.ui.fg },
+    a = { bg = statusline_bg, fg = theme.syn.fun },
+    b = { bg = statusline_bg, fg = theme.ui.fg },
+    c = { bg = statusline_bg, fg = theme.ui.fg },
   }
 
   kanagawa.insert = {
-    a = { bg = "#000000", fg = theme.diag.ok },
-    b = { bg = "#000000", fg = theme.ui.bg },
+    a = { bg = statusline_bg, fg = theme.diag.ok },
+    b = { bg = statusline_bg, fg = theme.ui.fg },
   }
 
   kanagawa.command = {
-    a = { bg = "#000000", fg = theme.syn.operator },
-    b = { bg = "#000000", fg = theme.ui.bg },
+    a = { bg = statusline_bg, fg = theme.syn.operator },
+    b = { bg = statusline_bg, fg = theme.ui.fg },
   }
 
   kanagawa.visual = {
-    a = { bg = "#000000", fg = theme.syn.keyword },
-    b = { bg = "#000000", fg = theme.ui.bg },
+    a = { bg = statusline_bg, fg = theme.syn.keyword },
+    b = { bg = statusline_bg, fg = theme.ui.fg },
   }
 
   kanagawa.replace = {
-    a = { bg = "#000000", fg = theme.syn.constant },
-    b = { bg = "#000000", fg = theme.ui.bg },
+    a = { bg = statusline_bg, fg = theme.syn.constant },
+    b = { bg = statusline_bg, fg = theme.ui.fg },
   }
 
   kanagawa.inactive = {
-    a = { bg = "#000000", fg = theme.ui.fg_dim },
-    b = { bg = "#000000", fg = theme.ui.fg_dim, gui = "bold" },
-    c = { bg = "#000000", fg = theme.ui.fg_dim },
+    a = { bg = statusline_bg, fg = theme.ui.fg_dim },
+    b = { bg = statusline_bg, fg = theme.ui.fg_dim, gui = "bold" },
+    c = { bg = statusline_bg, fg = theme.ui.fg_dim },
   }
 
   if vim.g.kanagawa_lualine_bold then

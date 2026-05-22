@@ -1,4 +1,5 @@
-local lazy_filetypes = { 'css', 'scss', 'sass', 'html', 'htmlangular', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' }
+local lazy_filetypes = { 'css', 'scss', 'sass', 'html', 'htmlangular', 'javascript', 'javascriptreact', 'typescript',
+  'typescriptreact', 'vue', 'svelte' }
 
 local ensure_highlight_colors_loaded
 

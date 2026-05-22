@@ -96,10 +96,10 @@ ensure_completion_loaded = function()
     completion = {
       menu = {
         draw = {
-          treesitter = { "lsp" },
+          -- treesitter = { "lsp" },
         },
       },
-      documentation = { auto_show = true, window = { border = "rounded" } },
+      documentation = { auto_show = false, window = { border = "rounded" } },
       list = {
         selection = {
           preselect = false,
