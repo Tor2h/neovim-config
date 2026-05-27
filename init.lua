@@ -1,3 +1,5 @@
+require('config.data_path').setup()
+
 require('plugins.auto-session')
 require('config.autocmd')
 require('config.globals')
