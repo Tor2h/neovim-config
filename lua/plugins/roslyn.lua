@@ -1,5 +1,21 @@
 vim.pack.add({ 'https://github.com/seblyng/roslyn.nvim' })
 
+local function is_windows()
+  return vim.fn.has('win32') == 1 or vim.fn.has('win64') == 1
+end
+
+local function get_home_dir()
+  return vim.env.USERPROFILE or vim.env.HOME
+end
+
+local function find_first_executable(candidates)
+  for _, candidate in ipairs(candidates) do
+    if candidate and candidate ~= '' and vim.fn.executable(candidate) == 1 then
+      return candidate
+    end
+  end
+end
+
 local function get_roslyn_cmd()
   local data_dir = vim.fn.stdpath('data')
   local exe_matches = vim.fn.glob(vim.fs.joinpath(
@@ -37,6 +53,20 @@ local function get_roslyn_cmd()
       dll_matches[#dll_matches],
       '--logLevel=Information',
       '--extensionLogDirectory=' .. data_dir,
+      '--stdio',
+    }
+  end
+
+  local home_dir = get_home_dir()
+  local roslyn_language_server = find_first_executable({
+    home_dir and vim.fs.joinpath(home_dir, '.dotnet', 'tools', is_windows() and 'roslyn-language-server.cmd'
+      or 'roslyn-language-server'),
+    is_windows() and 'roslyn-language-server.cmd' or 'roslyn-language-server',
+  })
+
+  if roslyn_language_server then
+    return {
+      roslyn_language_server,
       '--stdio',
     }
   end
