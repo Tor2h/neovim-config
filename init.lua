@@ -13,24 +13,38 @@ require('plugins.nvim-treesitter')
 require('plugins.oil')
 require('plugins.themes')
 require('config.options')
+require('plugins.auto-tag')
 
-local lazyload = require('lazyload')
+require('plugins.lualine')
+require('plugins.mini')
+require('plugins.yanky')
+require('plugins.db')
+require('plugins.gitsigns')
+require('plugins.global-note')
+require('plugins.harpoon')
+require('plugins.highlight-colors')
+require('plugins.render-markdown')
+require('plugins.none-ls')
+require('plugins.completion')
+require('plugins.undotree')
+require('plugins.trouble')
 
-lazyload.require_modules_on_vim_enter({
-  'plugins.lualine',
-  'plugins.mini',
-  'plugins.yanky',
-}, { sync = true })
+-- local lazyload = require('lazyload')
 
-lazyload.require_modules_on_vim_enter({
-  'plugins.auto-tag',
-  'plugins.db',
-  'plugins.gitsigns',
-  'plugins.global-note',
-  'plugins.harpoon',
-  'plugins.highlight-colors',
-  'plugins.render-markdown',
-  'plugins.none-ls',
-  'plugins.completion',
-  'plugins.undotree',
-})
+-- lazyload.require_modules_on_vim_enter({
+--   'plugins.lualine',
+--   'plugins.mini',
+--   'plugins.yanky',
+-- }, { sync = true })
+--
+-- lazyload.require_modules_on_vim_enter({
+--   'plugins.db',
+--   'plugins.gitsigns',
+--   'plugins.global-note',
+--   'plugins.harpoon',
+--   'plugins.highlight-colors',
+--   'plugins.render-markdown',
+--   'plugins.none-ls',
+--   'plugins.completion',
+--   'plugins.undotree',
+-- })
