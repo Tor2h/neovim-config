@@ -28,8 +28,9 @@ require('plugins.none-ls')
 require('plugins.completion')
 require('plugins.undotree')
 require('plugins.trouble')
+require('plugins.trouble')
+require('plugins.typst')
 
--- local lazyload = require('lazyload')
 
 -- lazyload.require_modules_on_vim_enter({
 --   'plugins.lualine',

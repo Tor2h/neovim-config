@@ -131,6 +131,10 @@
       "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
       "src": "https://github.com/folke/trouble.nvim"
     },
+    "typst-preview.nvim": {
+      "rev": "1c2e19486397be1c580b560fc50ee36abe329c46",
+      "src": "https://github.com/chomosuke/typst-preview.nvim"
+    },
     "undotree": {
       "rev": "02b69aed427b848c4dca483fc5e9524b6019c296",
       "src": "https://github.com/jiaoshijie/undotree"
