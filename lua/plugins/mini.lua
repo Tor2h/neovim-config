@@ -1,12 +1,10 @@
-require("lazyload").on_vim_enter(function()
-  vim.pack.add({ 'https://github.com/echasnovski/mini.pairs' })
-  vim.pack.add({ 'https://github.com/echasnovski/mini.icons' })
+vim.pack.add({ 'https://github.com/echasnovski/mini.pairs' })
+vim.pack.add({ 'https://github.com/echasnovski/mini.icons' })
 
-  require("mini.pairs").setup({
-    version = false
-  })
+require("mini.pairs").setup({
+  version = false
+})
 
-  require("mini.icons").setup({
-    version = false
-  })
-end)
+require("mini.icons").setup({
+  version = false
+})

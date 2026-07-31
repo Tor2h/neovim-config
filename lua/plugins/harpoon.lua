@@ -1,19 +1,13 @@
-local ensure_harpoon_loaded
+vim.pack.add({ 'https://github.com/nvim-lua/plenary.nvim' })
+vim.pack.add({
+  {
+    src = "https://github.com/ThePrimeagen/harpoon",
+    version = "harpoon2",
+  },
+})
 
-ensure_harpoon_loaded = function()
-  vim.pack.add({ 'https://github.com/nvim-lua/plenary.nvim' })
-  vim.pack.add({
-    {
-      src = "https://github.com/ThePrimeagen/harpoon",
-      version = "harpoon2",
-    },
-  })
-
-  ensure_harpoon_loaded = function() end
-end
 
 local function harpoon()
-  ensure_harpoon_loaded()
   return require("harpoon")
 end
 
