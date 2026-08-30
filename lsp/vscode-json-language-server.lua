@@ -26,7 +26,7 @@ return {
   cmd = { 'vscode-json-language-server', '--stdio' },
   filetypes = { 'json', 'jsonc' },
   init_options = {
-    provideFormatter = false,
+    provideFormatter = true,
   },
   root_markers = { '.git' },
 }

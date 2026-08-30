@@ -67,3 +67,13 @@ set("n", "<CR>", function()
     return k("<CR>")
   end
 end, { expr = true })
+
+-- normal mode: format whole buffer
+vim.keymap.set('n', '<leader>j', function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = 'Format buffer' })
+
+-- visual mode: format only the selected lines
+vim.keymap.set('v', '<leader>j', function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = 'Format selection' })

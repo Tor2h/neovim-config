@@ -12,25 +12,25 @@ vim.lsp.enable('tinymist')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('clangd')
 
-local function is_json_buffer(bufnr)
-  return vim.bo[bufnr].filetype == 'json'
-end
+-- local function is_json_buffer(bufnr)
+--   return vim.bo[bufnr].filetype == 'json'
+-- end
 
 local function is_csharp_buffer(bufnr)
   return vim.bo[bufnr].filetype == 'cs'
 end
 
-local function is_sql_buffer(bufnr)
-  return vim.bo[bufnr].filetype == 'sql'
-end
+-- local function is_sql_buffer(bufnr)
+--   return vim.bo[bufnr].filetype == 'sql'
+-- end
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('my.lsp', {}),
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local is_csharp = is_csharp_buffer(args.buf)
-    local is_sql = is_sql_buffer(args.buf)
-    local is_json = is_json_buffer(args.buf)
+    -- local is_sql = is_sql_buffer(args.buf)
+    -- local is_json = is_json_buffer(args.buf)
 
     if client.name == 'roslyn' then
       -- roslyn.nvim triggers explicit textDocument/diagnostic refreshes.
@@ -39,8 +39,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if is_csharp then
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
+      client.server_capabilities.documentFormattingProvider = true
+      client.server_capabilities.documentRangeFormattingProvider = true
     end
 
     if client:supports_method('textDocument/implementation') then
@@ -50,19 +50,19 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
     -- Auto-format ("lint") on save.
     -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
-    if not is_csharp
-        and not is_sql
-        and not is_json
-        and not client:supports_method('textDocument/willSaveWaitUntil')
-        and client:supports_method('textDocument/formatting') then
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
-        buffer = args.buf,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
-        end,
-      })
-    end
+    -- if not is_csharp
+    --     and not is_sql
+    --     and not is_json
+    --     and not client:supports_method('textDocument/willSaveWaitUntil')
+    --     and client:supports_method('textDocument/formatting') then
+    --   vim.api.nvim_create_autocmd('BufWritePre', {
+    --     group = vim.api.nvim_create_augroup('my.lsp', { clear = false }),
+    --     buffer = args.buf,
+    --     callback = function()
+    --       vim.lsp.buf.format({ bufnr = args.buf, id = client.id, timeout_ms = 1000 })
+    --     end,
+    --   })
+    -- end
   end,
 })
 

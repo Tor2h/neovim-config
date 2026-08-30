@@ -30,7 +30,7 @@ return {
   ---@type lspconfig.settings.html
   settings = {},
   init_options = {
-    provideFormatter = false,
+    provideFormatter = true,
     embeddedLanguages = { css = true, javascript = true },
     configurationSection = { 'html', 'css', 'javascript' },
   },

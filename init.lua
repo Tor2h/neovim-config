@@ -23,11 +23,13 @@ require('plugins.global-note')
 require('plugins.harpoon')
 require('plugins.highlight-colors')
 require('plugins.render-markdown')
-require('plugins.none-ls')
+-- require('plugins.none-ls')
 require('plugins.completion')
 require('plugins.undotree')
 require('plugins.trouble')
 require('plugins.typst')
+require('plugins.dap')
+require('plugins.netrw')
 
 
 -- lazyload.require_modules_on_vim_enter({
