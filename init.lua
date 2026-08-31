@@ -30,6 +30,7 @@ require('plugins.trouble')
 require('plugins.typst')
 require('plugins.dap')
 require('plugins.netrw')
+-- require('plugins.music')
 
 
 -- lazyload.require_modules_on_vim_enter({

@@ -79,6 +79,10 @@
       "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
+    "nvim.sfx_player": {
+      "rev": "b92918a434f2e125f40a55c2c1f7e34deda22a9a",
+      "src": "https://github.com/monok-robeto/nvim.sfx_player"
+    },
     "oil.nvim": {
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
       "src": "https://github.com/stevearc/oil.nvim"
