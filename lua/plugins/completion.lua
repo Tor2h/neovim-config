@@ -69,7 +69,8 @@ require("blink.cmp").setup({
     preset = 'luasnip',
   },
   sources = {
-    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    default = { 'lsp', 'path', 'snippets' },
+    -- default = { 'lsp', 'path', 'snippets', 'buffer' },
     transform_items = function(_, items)
       for _, item in ipairs(items) do
         item.label = to_string_or_nil(item.label) or ""

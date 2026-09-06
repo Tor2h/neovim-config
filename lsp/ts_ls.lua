@@ -187,7 +187,7 @@ return {
       end)
     end, { desc = 'Go to source definition' })
     client.server_capabilities.documentFormattingProvider = true
-    -- client.server_capabilities.referencesProvider = false
+    client.server_capabilities.referencesProvider = true
     client.server_capabilities.renameProvider = false
   end,
 }
