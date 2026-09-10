@@ -1,0 +1,6 @@
+vim.pack.add({ 'https://github.com/chrisgrieser/nvim-chainsaw' })
+local chainsaw = require("chainsaw")
+chainsaw.setup({})
+vim.keymap.set("n", "<leader>lg", chainsaw.variableLog, { desc = "Log variable" })
+vim.pack.add({'https://github.com/abecodes/tabout.nvim'})
+require("tabout").setup({})
