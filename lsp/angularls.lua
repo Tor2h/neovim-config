@@ -118,6 +118,13 @@ return {
     return vim.lsp.rpc.start(cmd, dispatchers)
   end,
 
-  filetypes = { 'typescript', 'html', 'typescriptreact', 'htmlangular' },
-  root_markers = { 'angular.json', 'package.json' },
+  filetypes = { 'typescript', 'html', 'typescriptreact', 'htmlangular', 'ts' },
+  root_markers = { 'package.json', 'tsconfig.json' },
+  -- Large repos (e.g. big node_modules trees) make Neovim's built-in
+  -- recursive file watcher very expensive. Tell the server we don't support
+  -- dynamic registration for workspace/didChangeWatchedFiles so it relies on
+  -- its own (cheaper) internal watching instead.
+  capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), {
+    workspace = { didChangeWatchedFiles = { dynamicRegistration = false } },
+  }),
 }

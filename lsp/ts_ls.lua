@@ -77,6 +77,13 @@
 return {
   init_options = { hostInfo = 'neovim' },
   cmd = { 'typescript-language-server', '--stdio' },
+  -- Large repos (e.g. big node_modules trees) make Neovim's built-in
+  -- recursive file watcher very expensive. Tell the server we don't support
+  -- dynamic registration for workspace/didChangeWatchedFiles so it relies on
+  -- its own (cheaper) internal watching instead.
+  capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), {
+    workspace = { didChangeWatchedFiles = { dynamicRegistration = false } },
+  }),
   filetypes = {
     'javascript',
     'javascriptreact',
@@ -188,6 +195,6 @@ return {
     end, { desc = 'Go to source definition' })
     client.server_capabilities.documentFormattingProvider = true
     client.server_capabilities.referencesProvider = true
-    client.server_capabilities.renameProvider = false
+    client.server_capabilities.renameProvider = true
   end,
 }
