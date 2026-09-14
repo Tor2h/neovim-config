@@ -11,6 +11,7 @@ vim.lsp.enable('taplo')
 vim.lsp.enable('tinymist')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('clangd')
+vim.lsp.enable('pylsp')
 
 -- local function is_json_buffer(bufnr)
 --   return vim.bo[bufnr].filetype == 'json'
